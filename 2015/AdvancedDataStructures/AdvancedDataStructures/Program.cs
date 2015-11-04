@@ -11,15 +11,33 @@
         public static void Main(string[] args)
         {
             var priorityQueue = new PriorityQueue<string>();
-            priorityQueue.Enqueue("Z");
-            Console.WriteLine(priorityQueue);
-            priorityQueue.Enqueue("C");
-            Console.WriteLine(priorityQueue);
-            priorityQueue.Enqueue("D");
+            priorityQueue.Enqueue("E");
             Console.WriteLine(priorityQueue);
             priorityQueue.Enqueue("B");
             Console.WriteLine(priorityQueue);
-            priorityQueue.Enqueue("Q");
+            priorityQueue.Enqueue("G");
+            Console.WriteLine(priorityQueue);
+            priorityQueue.Enqueue("Z");
+            Console.WriteLine(priorityQueue);
+            priorityQueue.Enqueue("M");
+            Console.WriteLine(priorityQueue);
+            priorityQueue.Enqueue("D");
+            Console.WriteLine(priorityQueue);
+            priorityQueue.Enqueue("A");
+            Console.WriteLine(priorityQueue);
+            priorityQueue.Dequeue();
+            Console.WriteLine(priorityQueue);
+            priorityQueue.Dequeue();
+            Console.WriteLine(priorityQueue);
+            priorityQueue.Dequeue();
+            Console.WriteLine(priorityQueue);
+            priorityQueue.Dequeue();
+            Console.WriteLine(priorityQueue);
+            priorityQueue.Dequeue();
+            Console.WriteLine(priorityQueue);
+            priorityQueue.Dequeue();
+            Console.WriteLine(priorityQueue);
+            priorityQueue.Dequeue();
             Console.WriteLine(priorityQueue);
         }
     }
