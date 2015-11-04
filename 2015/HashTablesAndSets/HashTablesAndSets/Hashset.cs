@@ -4,7 +4,7 @@
     using System.Collections;
     using System.Collections.Generic;
 
-    public class Hashset<K>
+    public class Hashset<K> : IEnumerable
     {
         private const int InitialCapacity = 16;
         private HashTable<K, K> data;
@@ -32,7 +32,10 @@
 
         public void Add(K key)
         {
-            this.data.Add(key, key);
+            if (!this.data.ContainesKey(key))
+            {
+                this.data.Add(key, key);
+            }
         }
 
         public bool Remove(K key)
@@ -42,7 +45,7 @@
 
         public K Find(K key)
         {
-            KeyValuePair<K,K>? keyValuePair = this.data.Find(key);
+            KeyValuePair<K, K>? keyValuePair = this.data.Find(key);
             return keyValuePair.GetValueOrDefault().Key;
         }
 
@@ -56,14 +59,46 @@
             return this.data.ContainesKey(key);
         }
 
-        public Hashset<K> Union(Hashset<K> hashset)
+        public Hashset<K> Union(Hashset<K> secondHashSet)
         {
-            throw new NotImplementedException("NOT IMPLEMENTED");
+            var union = new Hashset<K>();
+            foreach (K key in this)
+            {
+                union.Add(key);
+            }
+
+            foreach (K key in secondHashSet)
+            {
+                if (!union.Containes(key))
+                {
+                    union.Add(key);
+                }
+            }
+
+            return union;
         }
 
-        public Hashset<K> Intersect(Hashset<K> hashset)
+        public Hashset<K> Intersect(Hashset<K> secondHashSet)
         {
-            throw new NotImplementedException("NOT IMPLEMENTED");
+            var intersectionSet = new Hashset<K>();
+            foreach (K firstKey in this)
+            {
+                if (secondHashSet.Containes(firstKey))
+                {
+                    intersectionSet.Add(firstKey);
+                }
+            }
+
+            return intersectionSet;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            ICollection<K> keys = this.data.Keys();
+            foreach (var item in keys)
+            {
+                yield return item;
+            }
         }
     }
 }

@@ -75,6 +75,7 @@
         public void Clear()
         {
             this.data = new LinkedList<KeyValuePair<K, V>>[this.capacity];
+            this.count = 0;
         }
 
         public ICollection<K> Keys()
@@ -184,7 +185,7 @@
         {
             var index = this.GetIndex(key);
             var keyValuePairList = this.data[index];
-            if (keyValuePairList == null)
+            if (keyValuePairList != null)
             {
                 return this.HasKey(keyValuePairList, key);
             }
