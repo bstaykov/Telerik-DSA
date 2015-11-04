@@ -45,6 +45,8 @@
     <Compile Include="PriorityQueue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringComparerAscending.cs" />
+    <Compile Include="StringComparerDescending.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

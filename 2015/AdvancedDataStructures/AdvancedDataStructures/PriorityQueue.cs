@@ -1,6 +1,7 @@
 ﻿namespace AdvancedDataStructures
 {
     using System;
+    using System.Collections.Generic;
 
     public class PriorityQueue<T> where T : IComparable
     {
@@ -8,6 +9,7 @@
         private T[] data;
         private int capacity;
         private int count;
+        private IComparer<T> comparer;
 
         public PriorityQueue()
             : this(InitialCapacity)
@@ -19,6 +21,15 @@
             this.capacity = capacity;
             this.data = new T[capacity];
             this.count = 0;
+            this.comparer = Comparer<T>.Default;
+        }
+
+        public PriorityQueue(IComparer<T> comparer)
+        {
+            this.capacity = InitialCapacity;
+            this.data = new T[InitialCapacity];
+            this.count = 0;
+            this.comparer = comparer;
         }
 
         public int Count
@@ -85,15 +96,15 @@
             {
                 T left = this.data[leftIndex];
                 T rigth = this.data[rigthIndex];
-                if (left.CompareTo(rigth) == -1)
+                if (this.comparer.Compare(left, rigth) == -1)
                 {
-                    if (left.CompareTo(parrent) == -1)
+                    if (this.comparer.Compare(left, parrent) == -1)
                     {
                         this.Swap(leftIndex, parrentIndex);
                         this.CompareWithChilds(leftIndex);
                     }
                 }
-                else if (rigth.CompareTo(parrent) == -1)
+                else if (this.comparer.Compare(rigth, parrent) == -1)
                 {
                     this.Swap(rigthIndex, parrentIndex);
                     this.CompareWithChilds(rigthIndex);
@@ -102,7 +113,7 @@
             else if (isLeft)
             {
                 T left = this.data[leftIndex];
-                if (left.CompareTo(parrent) == -1)
+                if (this.comparer.Compare(left, parrent) == -1)
                 {
                     this.Swap(leftIndex, parrentIndex);
                     this.CompareWithChilds(leftIndex);
@@ -120,12 +131,9 @@
         private void CompareWithParrent(int index)
         {
             var parrentIndex = (index - 1) / 2;
-            if (this.data[parrentIndex].CompareTo(this.data[index]) == 1)
+            if (this.comparer.Compare(this.data[parrentIndex], this.data[index]) == 1)
             {
-                var tempItem = this.data[parrentIndex];
-                this.data[parrentIndex] = this.data[index];
-                this.data[index] = tempItem;
-
+                this.Swap(parrentIndex, index);
                 if (parrentIndex != 0)
                 {
                     this.CompareWithParrent(parrentIndex);

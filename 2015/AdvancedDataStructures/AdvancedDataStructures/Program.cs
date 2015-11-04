@@ -10,7 +10,9 @@
     {
         public static void Main(string[] args)
         {
-            var priorityQueue = new PriorityQueue<string>();
+            var comparerDesc = new StringComparerDescending();
+            var comparerAsc = new StringComparerAscending();
+            var priorityQueue = new PriorityQueue<string>(comparerAsc);
             priorityQueue.Enqueue("E");
             Console.WriteLine(priorityQueue);
             priorityQueue.Enqueue("B");
