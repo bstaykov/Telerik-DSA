@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.FindProductsInRange", "0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomGenerator", "RandomGenerator\RandomGenerator.csproj", "{201F15B9-5EFE-4808-A8E1-B3A77DD48F4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00.PowerCollections", "00.PowerCollections\00.PowerCollections.csproj", "{29317A95-BF51-4278-A7EC-64D03BABA765}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{201F15B9-5EFE-4808-A8E1-B3A77DD48F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{201F15B9-5EFE-4808-A8E1-B3A77DD48F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{201F15B9-5EFE-4808-A8E1-B3A77DD48F4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29317A95-BF51-4278-A7EC-64D03BABA765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29317A95-BF51-4278-A7EC-64D03BABA765}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29317A95-BF51-4278-A7EC-64D03BABA765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29317A95-BF51-4278-A7EC-64D03BABA765}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
