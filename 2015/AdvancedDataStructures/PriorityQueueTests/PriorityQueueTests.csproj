@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AdvancedDataStructures\AdvancedDataStructures.csproj">
+    <ProjectReference Include="..\AdvancedDataStructures\01.PriorityQueue.csproj">
       <Project>{761462b1-7657-4077-83ea-5dffe7a8f6c7}</Project>
-      <Name>AdvancedDataStructures</Name>
+      <Name>01.PriorityQueue</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
