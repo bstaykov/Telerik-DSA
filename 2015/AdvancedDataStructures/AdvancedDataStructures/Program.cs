@@ -12,7 +12,7 @@
         {
             var comparerDesc = new StringComparerDescending();
             var comparerAsc = new StringComparerAscending();
-            var priorityQueue = new PriorityQueue<string>(comparerAsc);
+            var priorityQueue = new PriorityQueue<string>();
             priorityQueue.Enqueue("E");
             Console.WriteLine(priorityQueue);
             priorityQueue.Enqueue("B");

@@ -5,7 +5,7 @@
 
     public class PriorityQueue<T> where T : IComparable
     {
-        private const int InitialCapacity = 4;
+        private const int InitialCapacity = 16;
         private T[] data;
         private int capacity;
         private int count;
@@ -89,31 +89,31 @@
         {
             var leftIndex = (parrentIndex * 2) + 1;
             var isLeft = leftIndex < this.count;
-            var rigthIndex = (parrentIndex * 2) + 2;
-            var isRigth = rigthIndex < this.count;
+            var rightIndex = (parrentIndex * 2) + 2;
+            var isRight = rightIndex < this.count;
             var parrent = this.data[parrentIndex];
-            if (isLeft && isRigth)
+            if (isLeft && isRight)
             {
                 T left = this.data[leftIndex];
-                T rigth = this.data[rigthIndex];
-                if (this.comparer.Compare(left, rigth) == -1)
+                T right = this.data[rightIndex];
+                if (this.comparer.Compare(left, right) > 0)
                 {
-                    if (this.comparer.Compare(left, parrent) == -1)
+                    if (this.comparer.Compare(right, parrent) < 0)
                     {
-                        this.Swap(leftIndex, parrentIndex);
-                        this.CompareWithChilds(leftIndex);
+                        this.Swap(rightIndex, parrentIndex);
+                        this.CompareWithChilds(rightIndex);
                     }
-                }
-                else if (this.comparer.Compare(rigth, parrent) == -1)
+                }                    
+                else if (this.comparer.Compare(left, parrent) < 0)
                 {
-                    this.Swap(rigthIndex, parrentIndex);
-                    this.CompareWithChilds(rigthIndex);
+                    this.Swap(leftIndex, parrentIndex);
+                    this.CompareWithChilds(leftIndex);
                 }
             }
             else if (isLeft)
             {
                 T left = this.data[leftIndex];
-                if (this.comparer.Compare(left, parrent) == -1)
+                if (this.comparer.Compare(left, parrent) < 0)
                 {
                     this.Swap(leftIndex, parrentIndex);
                     this.CompareWithChilds(leftIndex);
