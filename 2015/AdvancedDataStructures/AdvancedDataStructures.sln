@@ -13,6 +13,26 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomGenerator", "RandomGe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00.PowerCollections", "00.PowerCollections\00.PowerCollections.csproj", "{29317A95-BF51-4278-A7EC-64D03BABA765}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{865FE060-4558-4768-B6FF-F1CFEA90B5FF}"
+	ProjectSection(SolutionItems) = preProject
+		slides\index.html = slides\index.html
+		slides\open.js = slides\open.js
+		slides\package.json = slides\package.json
+		slides\README.md = slides\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "imgs", "imgs", "{7398EF15-13C7-46DD-BDE8-2D2AA9C6D594}"
+	ProjectSection(SolutionItems) = preProject
+		slides\imgs\binary-heap.png = slides\imgs\binary-heap.png
+		slides\imgs\c5-classes.png = slides\imgs\c5-classes.png
+		slides\imgs\generic-collections.png = slides\imgs\generic-collections.png
+		slides\imgs\rope.png = slides\imgs\rope.png
+		slides\imgs\suffix-tree.png = slides\imgs\suffix-tree.png
+		slides\imgs\trie.png = slides\imgs\trie.png
+		slides\imgs\untyped-collections.png = slides\imgs\untyped-collections.png
+		slides\imgs\wintelect-power-collections.png = slides\imgs\wintelect-power-collections.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +62,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7398EF15-13C7-46DD-BDE8-2D2AA9C6D594} = {865FE060-4558-4768-B6FF-F1CFEA90B5FF}
 	EndGlobalSection
 EndGlobal
