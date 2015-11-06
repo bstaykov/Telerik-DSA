@@ -20,9 +20,22 @@
         public void Add(K1 key1, K2 key2, V value)
         {
             var id = this.GenerateId();
-            this.key1Identifiers.Add(key1, id);
-            this.key2Identifiers.Add(key2, id);
-            this.values.Add(id, value);
+            if (key1Identifiers.ContainsKey(key1) && key2Identifiers.ContainsKey(key2))
+            {
+                var id1 = this.key1Identifiers[key1];
+                var id2 = this.key2Identifiers[key2];
+                if (id1 == id2)
+                {
+                    id = id1;
+                    this.values.Add(id, value);
+                }
+            }
+            else
+            {
+                this.key1Identifiers.Add(key1, id);
+                this.key2Identifiers.Add(key2, id);
+                this.values.Add(id, value);
+            }
         }
 
         public ICollection<V> Find(K1 key)
