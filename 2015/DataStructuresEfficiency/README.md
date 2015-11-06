@@ -2,20 +2,20 @@
 ### _Homework_
 
 1. A text file `students.txt` holds information about students and their courses in the following format:
-  * Using `SortedDictionary<K,T>` print the courses in alphabetical order and for each of them prints the students ordered by family and then by name:
-```cs
-Kiril  | Ivanov   | C#
-Stefka | Nikolova | SQL
-Stela  | Mineva   | Java
-Milena | Petrova  | C#
-Ivan   | Grigorov | C#
-Ivan   | Kolev    | SQL
-```
-```cs
-C#: Ivan Grigorov, Kiril Ivanov, Milena Petrova
-Java: Stela Mineva
-SQL: Ivan Kolev, Stefka Nikolova
-```
+	* Using `SortedDictionary<K,T>` print the courses in alphabetical order and for each of them prints the students ordered by family and then by name:
+	```cs
+	Kiril  | Ivanov   | C#
+	Stefka | Nikolova | SQL
+	Stela  | Mineva   | Java
+	Milena | Petrova  | C#
+	Ivan   | Grigorov | C#
+	Ivan   | Kolev    | SQL
+	```
+	```cs
+	C#: Ivan Grigorov, Kiril Ivanov, Milena Petrova
+	Java: Stela Mineva
+	SQL: Ivan Kolev, Stefka Nikolova
+	```
 2. A large trade company has millions of articles, each described by barcode, vendor, title and price.
   * Implement a data structure to store them that allows fast retrieval of all articles in given price range [x…y].
   * _Hint_: use `OrderedMultiDictionary<K,T>` from Wintellect's Power Collections for .NET.
