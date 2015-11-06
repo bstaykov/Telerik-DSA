@@ -1,10 +1,9 @@
-﻿namespace _01.Students
+﻿namespace HandsComparerAsc
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-
         }
     }
 }
