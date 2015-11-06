@@ -31,6 +31,40 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12.Stack", "12.Stack\12.Sta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "13.Queue", "13.Queue\13.Queue.csproj", "{869E833B-AF8F-4A37-8811-A940B868F630}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC9D4E38-2CB9-4504-AA1E-687691D96F09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "slides", "slides", "{11C09C3A-6D09-4B79-B3A0-2BB626F99C09}"
+	ProjectSection(SolutionItems) = preProject
+		slides\index.html = slides\index.html
+		slides\open.js = slides\open.js
+		slides\package.json = slides\package.json
+		slides\README.md = slides\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "homework", "homework", "{D113FDE4-C113-498D-907D-A67B390E0EC6}"
+	ProjectSection(SolutionItems) = preProject
+		homework\README.md = homework\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "imgs", "imgs", "{DC211A66-37D5-4D0B-8F11-002CDE855657}"
+	ProjectSection(SolutionItems) = preProject
+		slides\imgs\double-linked-list.png = slides\imgs\double-linked-list.png
+		slides\imgs\linked-list.png = slides\imgs\linked-list.png
+		slides\imgs\linked-queue.png = slides\imgs\linked-queue.png
+		slides\imgs\linked-stack.png = slides\imgs\linked-stack.png
+		slides\imgs\list-interfaces.png = slides\imgs\list-interfaces.png
+		slides\imgs\list.png = slides\imgs\list.png
+		slides\imgs\sequence.png = slides\imgs\sequence.png
+		slides\imgs\static-list.png = slides\imgs\static-list.png
+		slides\imgs\static-queue.png = slides\imgs\static-queue.png
+		slides\imgs\static-stack.png = slides\imgs\static-stack.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "imgs", "imgs", "{7D5CAFF2-1980-4599-91EA-F6D3C328685D}"
+	ProjectSection(SolutionItems) = preProject
+		homework\imgs\matrices.png = homework\imgs\matrices.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,5 +130,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{11C09C3A-6D09-4B79-B3A0-2BB626F99C09} = {FC9D4E38-2CB9-4504-AA1E-687691D96F09}
+		{D113FDE4-C113-498D-907D-A67B390E0EC6} = {FC9D4E38-2CB9-4504-AA1E-687691D96F09}
+		{DC211A66-37D5-4D0B-8F11-002CDE855657} = {11C09C3A-6D09-4B79-B3A0-2BB626F99C09}
+		{7D5CAFF2-1980-4599-91EA-F6D3C328685D} = {D113FDE4-C113-498D-907D-A67B390E0EC6}
 	EndGlobalSection
 EndGlobal

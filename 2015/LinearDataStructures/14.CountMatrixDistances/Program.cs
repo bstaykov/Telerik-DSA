@@ -4,19 +4,6 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class Possition
-    {
-        public Possition(int row, int col)
-        {
-            this.Row = row;
-            this.Col = col;
-        }
-
-        public int Row { get; set; }
-
-        public int Col { get; set; }
-    }
-
     public class Program
     {
         private static Random random = new Random();
@@ -39,12 +26,12 @@
 
         private static void CalculateDistance(string[,] matrix, Queue<Possition> cells)
         {
-            while(cells.Count != 0)
+            while (cells.Count != 0)
             {
                 var currentPossition = cells.Dequeue();
                 var currentRow = currentPossition.Row;
                 var currentCol = currentPossition.Col;
-                var cellValue = matrix[currentRow,currentCol];
+                var cellValue = matrix[currentRow, currentCol];
                 if (cellValue != "x")
                 {
                     int nextValue = cellValue != "*" ? (int.Parse(cellValue) + 1) : 1;
