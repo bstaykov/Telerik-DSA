@@ -27,9 +27,9 @@
 
         public ICollection<V> Find(K1 key)
         {
-            if (key1Identifiers.ContainsKey(key))
+            if (this.key1Identifiers.ContainsKey(key))
             {
-                var id = key1Identifiers[key];
+                var id = this.key1Identifiers[key];
 
                 return this.values[id];
             }
@@ -41,9 +41,9 @@
 
         public ICollection<V> Find(K2 key)
         {
-            if (key2Identifiers.ContainsKey(key))
+            if (this.key2Identifiers.ContainsKey(key))
             {
-                var id = key2Identifiers[key];
+                var id = this.key2Identifiers[key];
 
                 return this.values[id];
             }
@@ -55,15 +55,14 @@
 
         public ICollection<V> Find(K1 key1, K2 key2)
         {
-            if (key1Identifiers.ContainsKey(key1) && key2Identifiers.ContainsKey(key2))
+            if (this.key1Identifiers.ContainsKey(key1) && this.key2Identifiers.ContainsKey(key2))
             {
-                var id1 = key1Identifiers[key1];
-                var id2 = key2Identifiers[key2];
+                var id1 = this.key1Identifiers[key1];
+                var id2 = this.key2Identifiers[key2];
                 if (id1 == id2)
                 {
                     return this.values[id1];
                 }
-
             }
 
             return null;
@@ -72,7 +71,7 @@
         private Guid GenerateId()
         {
             var guid = Guid.NewGuid();
-            while (values.ContainsKey(guid))
+            while (this.values.ContainsKey(guid))
             {
                 guid = Guid.NewGuid();
             }
