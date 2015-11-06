@@ -39,6 +39,7 @@
             return students;
         }
 
+        // For Duplicates use List<FirstName> instead of SortedSet<FirstName>
         private static SortedDictionary<string, SortedDictionary<string, SortedSet<string>>> SortStudents(ICollection<Student> students)
         {
             var sortedStudents = new SortedDictionary<string, SortedDictionary<string, SortedSet<string>>>();
@@ -46,13 +47,13 @@
             foreach (var student in students)
             {
                 var course = student.CourseName;
-                if(!sortedStudents.ContainsKey(course))
+                if (!sortedStudents.ContainsKey(course))
                 {
                     sortedStudents.Add(course, new SortedDictionary<string, SortedSet<string>>());
                 }
 
                 var studentLastName = student.LastName;
-                if(!sortedStudents[course].ContainsKey(studentLastName))
+                if (!sortedStudents[course].ContainsKey(studentLastName))
                 {
                     sortedStudents[course].Add(studentLastName, new SortedSet<string>());
                 }
