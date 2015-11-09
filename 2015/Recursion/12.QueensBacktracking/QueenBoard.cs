@@ -10,7 +10,6 @@
         private static int counter = 0;
         private byte[,] matrix;
 
-
         public QueenBoard(int size)
         {
             this.matrix = new byte[size, size];
@@ -18,8 +17,34 @@
 
         public int FindQueensSolutions()
         {
-            CountSolutions(0);
+            this.CountSolutions(0);
             return counter;
+        }
+
+        public void PrintBoard()
+        {
+            Console.WriteLine("   a b c d e f g h");
+            for (int i = 0; i < this.matrix.GetLength(0); i++)
+            {
+                Console.Write("{0} ", 8 - i);
+                for (int j = 0; j < this.matrix.GetLength(1); j++)
+                {
+                    if (this.matrix[i, j] == 4)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write(" Q");
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                    }
+                    else
+                    {
+                        Console.Write(" x");
+                    }
+                }
+
+                Console.WriteLine();
+            }
+
+            Console.WriteLine();
         }
 
         private void CountSolutions(int row)
@@ -27,7 +52,7 @@
             if (row == this.matrix.GetLength(0))
             {
                 counter++;
-                PrintBoard();
+                this.PrintBoard();
                 return;
             }
 
@@ -36,12 +61,12 @@
                 if (this.matrix[row, col] == 0)
                 {
                     this.matrix[row, col] += 1;
-                    MarkQueen(row, col);
+                    this.MarkQueen(row, col);
 
-                    CountSolutions(row + 1);
+                    this.CountSolutions(row + 1);
 
                     this.matrix[row, col] -= 1;
-                    UnMarkQueen(row, col);
+                    this.UnMarkQueen(row, col);
                 }
             }
         }
@@ -80,37 +105,6 @@
             }
         }
 
-        public void FindEightQueensSolution(int row, int col, int previousRow)
-        {
-
-        }
-
-        public void PrintBoard()
-        {
-            Console.WriteLine("   a b c d e f g h");
-            for (int i = 0; i < this.matrix.GetLength(0); i++)
-            {
-                Console.Write("{0} ", 8 - i);
-                for (int j = 0; j < this.matrix.GetLength(1); j++)
-                {
-                    if (this.matrix[i, j] == 4)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(" Q");
-                        Console.ForegroundColor = ConsoleColor.Gray;
-                    }
-                    else
-                    {
-                        Console.Write(" x");
-                    }
-                }
-
-                Console.WriteLine();
-            }
-
-            Console.WriteLine();
-        }
-
         private bool CheckRowAndCol(int row, int col)
         {
             bool isRowCorrect = 0 <= row && row < this.matrix.GetLength(0);
@@ -139,7 +133,7 @@
             {
                 if (this.matrix[currentRow, i] == Queen)
                 {
-                    return false; ;
+                    return false;
                 }
             }
 
@@ -148,7 +142,7 @@
             {
                 if (this.matrix[currentRow, i] == Queen)
                 {
-                    return false; ;
+                    return false;
                 }
             }
 
@@ -157,7 +151,7 @@
             {
                 if (this.matrix[i, currentCol] == Queen)
                 {
-                    return false; ;
+                    return false;
                 }
             }
 
@@ -166,7 +160,7 @@
             {
                 if (this.matrix[i, currentCol] == Queen)
                 {
-                    return false; ;
+                    return false;
                 }
             }
 
@@ -235,7 +229,7 @@
             {
                 for (int col = 0; col < this.matrix.GetLength(1); col++)
                 {
-                    if (this.matrix[row, col] == Queen && CheckQueenDirections(row, col) == false)
+                    if (this.matrix[row, col] == Queen && this.CheckQueenDirections(row, col) == false)
                     {
                         return false;
                     }
