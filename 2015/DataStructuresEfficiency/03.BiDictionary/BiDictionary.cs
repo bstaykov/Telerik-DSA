@@ -20,7 +20,7 @@
         public void Add(K1 key1, K2 key2, V value)
         {
             var id = this.GenerateId();
-            if (key1Identifiers.ContainsKey(key1) && key2Identifiers.ContainsKey(key2))
+            if (this.key1Identifiers.ContainsKey(key1) && this.key2Identifiers.ContainsKey(key2))
             {
                 var id1 = this.key1Identifiers[key1];
                 var id2 = this.key2Identifiers[key2];
