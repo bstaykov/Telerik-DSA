@@ -6,17 +6,22 @@
     public class QueenBoard
     {
         private const char SwapValue = 'x';
+        private const char Empty = ' ';
         private const char Queen = 'Q';
+        private const bool BoolQueen = true;
         private static int counter = 0;
+        private int size = 0;
         private byte[,] matrix;
 
         public QueenBoard(int size)
         {
+            this.size = size;
             this.matrix = new byte[size, size];
         }
 
         public int FindQueensSolutions()
         {
+            counter = 0;
             this.CountSolutions(0);
             return counter;
         }
@@ -29,15 +34,16 @@
                 Console.Write("{0} ", 8 - i);
                 for (int j = 0; j < this.matrix.GetLength(1); j++)
                 {
+                    // Console.Write(" " + this.matrix[i, j]);
                     if (this.matrix[i, j] == 4)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(" Q");
+                        Console.Write(" " + Queen);
                         Console.ForegroundColor = ConsoleColor.Gray;
                     }
                     else
                     {
-                        Console.Write(" x");
+                        Console.Write(" " + SwapValue);
                     }
                 }
 
@@ -52,7 +58,8 @@
             if (row == this.matrix.GetLength(0))
             {
                 counter++;
-                this.PrintBoard();
+
+                // this.PrintBoard();
                 return;
             }
 
@@ -103,140 +110,6 @@
                     this.matrix[i, col - (i - row)] += 1;
                 }
             }
-        }
-
-        private bool CheckRowAndCol(int row, int col)
-        {
-            bool isRowCorrect = 0 <= row && row < this.matrix.GetLength(0);
-            bool isColCorrect = 0 <= col && col < this.matrix.GetLength(1);
-            if (!isRowCorrect || !isColCorrect)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        private void MoveQueen(int row, int col, int previousRow)
-        {
-            var temp = this.matrix[row, col];
-            this.matrix[row, col] = this.matrix[previousRow, col];
-            this.matrix[previousRow, col] = temp;
-        }
-
-        private bool CheckQueenDirections(int currentRow, int currentCol)
-        {
-            // up
-            for (int i = 0; i < currentCol - 1; i++)
-            {
-                if (this.matrix[currentRow, i] == Queen)
-                {
-                    return false;
-                }
-            }
-
-            // down
-            for (int i = currentCol + 1; i < this.matrix.GetLength(1); i++)
-            {
-                if (this.matrix[currentRow, i] == Queen)
-                {
-                    return false;
-                }
-            }
-
-            // left
-            for (int i = 0; i < currentRow - 1; i++)
-            {
-                if (this.matrix[i, currentCol] == Queen)
-                {
-                    return false;
-                }
-            }
-
-            // right
-            for (int i = currentRow + 1; i < this.matrix.GetLength(0); i++)
-            {
-                if (this.matrix[i, currentCol] == Queen)
-                {
-                    return false;
-                }
-            }
-
-            // up-left
-            int row = currentRow + 1;
-            int col = currentCol - 1;
-            while (row < this.matrix.GetLength(0) && col >= 0)
-            {
-                if (this.matrix[row, col] == Queen)
-                {
-                    return false;
-                }
-
-                row++;
-                col--;
-            }
-
-            // up-right
-            row = currentRow + 1;
-            col = currentCol + 1;
-            while (row < this.matrix.GetLength(0) && col < this.matrix.GetLength(1))
-            {
-                if (this.matrix[row, col] == Queen)
-                {
-                    return false;
-                }
-
-                row++;
-                col++;
-            }
-
-            // down-left
-            row = currentRow - 1;
-            col = currentCol - 1;
-            while (row >= 0 && col >= 0)
-            {
-                if (this.matrix[row, col] == Queen)
-                {
-                    return false;
-                }
-
-                row--;
-                col--;
-            }
-
-            // down-right
-            row = currentRow - 1;
-            col = currentCol + 1;
-            while (row >= 0 && col < this.matrix.GetLength(1))
-            {
-                if (this.matrix[row, col] == Queen)
-                {
-                    return false;
-                }
-
-                row--;
-                col++;
-            }
-
-            return true;
-        }
-
-        private bool CheckAllQueensDirections()
-        {
-            for (int row = 0; row < this.matrix.GetLength(0); row++)
-            {
-                for (int col = 0; col < this.matrix.GetLength(1); col++)
-                {
-                    if (this.matrix[row, col] == Queen && this.CheckQueenDirections(row, col) == false)
-                    {
-                        return false;
-                    }
-                }
-            }
-
-            return true;
         }
     }
 }
