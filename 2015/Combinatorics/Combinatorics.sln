@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabits", "Rabits\Rabits.csproj", "{42B3C193-EFA7-43E5-8435-994C0BF2BDC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{2BCED29F-608E-4AE2-911B-C6F83AF8AB95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BCED29F-608E-4AE2-911B-C6F83AF8AB95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BCED29F-608E-4AE2-911B-C6F83AF8AB95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42B3C193-EFA7-43E5-8435-994C0BF2BDC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42B3C193-EFA7-43E5-8435-994C0BF2BDC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42B3C193-EFA7-43E5-8435-994C0BF2BDC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42B3C193-EFA7-43E5-8435-994C0BF2BDC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
