@@ -6,7 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class MergeSorter<T> : ISorter<T> where T : IComparable<T>
+    public class MergeInsertSorter<T> : ISorter<T> where T : IComparable<T>
     {
         public void Sort(IList<T> collection)
         {
@@ -16,15 +16,21 @@
             }
 
             IList<T> sortedCollection = this.MergeSort(collection);
-            collection.Clear();
-            foreach (T item in sortedCollection)
+            for (int i = 0; i < collection.Count; i++)
             {
-                collection.Add(item);
+                collection[i] = sortedCollection[i];
             }
         }
 
         private IList<T> MergeSort(IList<T> collection)
         {
+            if (collection.Count <= 8)
+            {
+                var sorter = new InsertionSorter<T>();
+                sorter.Sort(collection);
+                return collection;
+            }
+
             if (collection.Count <= 1)
             {
                 return collection;

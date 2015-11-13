@@ -6,7 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Quicksorter<T> : ISorter<T> where T : IComparable<T>
+    public class QuickSorter<T> : ISorter<T> where T : IComparable<T>
     {
         public void Sort(IList<T> collection)
         {
