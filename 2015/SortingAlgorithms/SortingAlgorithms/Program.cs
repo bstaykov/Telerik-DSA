@@ -38,6 +38,11 @@
             Console.WriteLine("========================MergeSorter result=========================");
             GeneratePermutationsAndSort(copy, 0);
 
+            copy = collection.GetCopy();
+            sorter = new InsertionSorter<int>();
+            Console.WriteLine("========================Insertion result=========================");
+            GeneratePermutationsAndSort(copy, 0);
+
             Console.WriteLine("Linear search 101:");
             Console.WriteLine(collection.LinearSearch(101));
             Console.WriteLine();

@@ -16,15 +16,22 @@
             }
 
             IList<T> sortedCollection = this.MergeSort(collection);
-            collection.Clear();
-            foreach (T item in sortedCollection)
+
+            // collection.Clear();
+            for (int i = 0; i < collection.Count; i++)
             {
-                collection.Add(item);
+                collection[i] = sortedCollection[i];
             }
         }
 
         private IList<T> MergeSort(IList<T> collection)
         {
+            // if (collection.Count <= 8)
+            // {
+            // var sorter = new InsertionSorter<T>();
+            // sorter.Sort(collection);
+            // return collection;
+            // }
             if (collection.Count <= 1)
             {
                 return collection;

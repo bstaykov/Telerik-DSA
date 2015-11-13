@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InsertionSorter.cs" />
     <Compile Include="UpgradedSelectionSorter.cs" />
     <Compile Include="ISorter.cs" />
     <Compile Include="MergeSorter.cs" />
