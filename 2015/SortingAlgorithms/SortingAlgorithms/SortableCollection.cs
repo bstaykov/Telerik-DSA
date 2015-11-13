@@ -61,5 +61,16 @@
 
             Console.WriteLine();
         }
+
+        public SortableCollection<T> GetCopy()
+        {
+            var copy = new SortableCollection<T>();
+            for (int i = 0; i < this.Items.Count; i++)
+            {
+                copy.Items.Add(this.Items[i]);
+            }
+
+            return copy;
+        }
     }
 }
