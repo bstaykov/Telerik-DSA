@@ -18,7 +18,6 @@
                 }
 
                 replies[reply] += 1;
-                
             }
 
             int answer = CountMinimumRabits(replies);
