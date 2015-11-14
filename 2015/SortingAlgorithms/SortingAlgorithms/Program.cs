@@ -93,7 +93,7 @@
 
             copy = collection.GetCopy();
             stopWatch.Reset();
-            sorter = new MergeInsertSorter<int>();
+            sorter = new MergeInsertionSorter<int>();
             Console.WriteLine("========================MergeInsertSorter result=========================");
             GeneratePermutationsAndSort(copy, 0);
             Console.WriteLine("MergeInsertSorter:  " + stopWatch.Elapsed);
@@ -132,7 +132,7 @@
                 new UpgradedSelectionSorter<int>(),
                 new QuickSorter<int>(),
                 new MergeSorter<int>(),
-                new MergeInsertSorter<int>(),
+                new MergeInsertionSorter<int>(),
                 new InsertionSorter<int>(),
             };
 

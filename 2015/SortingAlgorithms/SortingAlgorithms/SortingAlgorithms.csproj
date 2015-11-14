@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InsertionSorter.cs" />
-    <Compile Include="MergeInsertSorter.cs" />
+    <Compile Include="MergeInsertionSorter.cs" />
     <Compile Include="UpgradedSelectionSorter.cs" />
     <Compile Include="ISorter.cs" />
     <Compile Include="MergeSorter.cs" />

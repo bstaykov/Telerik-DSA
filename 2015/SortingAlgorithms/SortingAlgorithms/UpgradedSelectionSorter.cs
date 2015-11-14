@@ -10,6 +10,11 @@
     {
         public void Sort(IList<T> collection)
         {
+            if (collection == null)
+            {
+                throw new ArgumentNullException("collection", "Collection to sort cannot be null!");
+            }
+
             int length = collection.Count;
             
             for (int i = 0; i < length - 1; i++)

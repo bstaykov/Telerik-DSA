@@ -10,6 +10,11 @@
     {
         public void Sort(IList<T> collection)
         {
+            if (collection == null)
+            {
+                throw new ArgumentNullException("collection", "Collection to sort cannot be null!");
+            }
+
             for (int i = 0; i < collection.Count - 1; i++)
             {
                 int minIndex = i;
