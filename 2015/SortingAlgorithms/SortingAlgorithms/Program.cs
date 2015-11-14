@@ -12,23 +12,52 @@
         private static ISorter<int> sorter;
         private static Stopwatch stopWatch = new Stopwatch();
         private static Random random = new Random();
+        private static int minRange = 0;
+        private static int maxRange = 100;
+        private static int searches = 5;
+        private static int shuffles = 10;
 
-        internal static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            TestSortersTime(10000);
+            TestLargeCollections(1000);
+            SortableCollection<int> collection = GenerateList(5);
+            TestSortersAllPermutations(collection);
+            collection = GenerateList(1000);
+            TestSearchAlgorithms(collection, searches);
 
-            var length = 5;
-            var collection = new SortableCollection<int>();
-            for (int i = 0; i < length; i++)
+            collection = GenerateList(10);
+            TestShuffle(collection, shuffles);
+        }
+
+        private static void TestShuffle(SortableCollection<int> collection, int shuffles)
+        {
+            Console.Write("\nOriginal collection: ");
+            collection.PrintAllItemsOnConsole();
+            for (int i = 0; i < shuffles; i++)
             {
-                collection.Items.Add(random.Next(0, 10000));
+                var copy = collection.GetCopy();
+                Console.WriteLine("\nShuffle...");
+                copy.Shuffle();
+                copy.PrintAllItemsOnConsole();
             }
+        }
 
+        private static void TestSearchAlgorithms(SortableCollection<int> collection, int searches)
+        {
+            for (int i = 0; i < searches; i++)
+            {
+                var searchedNumber = GetRandomNumber();
+                Console.WriteLine("Linear search: {0} Found: {1}", searchedNumber, collection.LinearSearch(searchedNumber));
+                Console.WriteLine("Binary search: {0} Found: {1}", searchedNumber, collection.BinarySearch(searchedNumber));
+            }
+        }
+
+        private static void TestSortersAllPermutations(SortableCollection<int> collection)
+        {
             Console.WriteLine("All items before sorting:");
             collection.PrintAllItemsOnConsole();
             Console.WriteLine();
-
-            Console.WriteLine("Calculating time (Permutation without repetitions for {0} numbers) ...", length);
+            Console.WriteLine("Calculating time (Permutation without repetitions) ...");
 
             var copy = collection.GetCopy();
             stopWatch.Reset();
@@ -77,26 +106,25 @@
             GeneratePermutationsAndSort(copy, 0);
             Console.WriteLine("Insertion:          " + stopWatch.Elapsed);
             Console.WriteLine();
-
-            Console.WriteLine("Linear search 101:");
-            Console.WriteLine(collection.LinearSearch(101));
-            Console.WriteLine();
-
-            Console.WriteLine("Binary search 101:");
-            Console.WriteLine(collection.BinarySearch(101));
-            Console.WriteLine();
-
-            Console.WriteLine("Shuffle:");
-            collection.Shuffle();
-            collection.PrintAllItemsOnConsole();
-            Console.WriteLine();
-
-            Console.WriteLine("Shuffle again:");
-            collection.Shuffle();
-            collection.PrintAllItemsOnConsole();
         }
 
-        private static void TestSortersTime(int length)
+        private static SortableCollection<int> GenerateList(int length)
+        {
+            var collection = new SortableCollection<int>();
+            for (int i = 0; i < length; i++)
+            {
+                collection.Items.Add(GetRandomNumber());
+            }
+
+            return collection;
+        }
+
+        private static int GetRandomNumber()
+        {
+            return random.Next(minRange, maxRange);
+        }
+
+        private static void TestLargeCollections(int length)
         {
             var sorters = new ISorter<int>[] 
             { 

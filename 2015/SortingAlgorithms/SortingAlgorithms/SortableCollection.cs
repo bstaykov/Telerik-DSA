@@ -5,6 +5,7 @@
 
     public class SortableCollection<T> where T : IComparable<T>
     {
+        private static Random random = new Random();
         private readonly IList<T> items;
 
         public SortableCollection()
@@ -32,17 +33,53 @@
 
         public bool LinearSearch(T item)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < this.items.Count; i++)
+            {
+                if (this.items[i].CompareTo(item) == 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public bool BinarySearch(T item)
         {
-            throw new NotImplementedException();
+            this.Sort(new QuickSorter<T>());
+            int startIndex = 0;
+            int endIndex = this.items.Count - 1;
+            int searchedIndex = -1;
+            while (startIndex <= endIndex)
+            {
+                int middleIndex = (startIndex + endIndex) / 2;
+                if (item.CompareTo(this.items[middleIndex]) < 0)
+                {
+                    endIndex = middleIndex - 1;
+                }
+                else if (item.CompareTo(this.items[middleIndex]) > 0)
+                {
+                    startIndex = middleIndex + 1;
+                }
+                else
+                {
+                    searchedIndex = middleIndex;
+                    break;
+                }
+            }
+
+            return searchedIndex != -1;
         }
 
         public void Shuffle()
         {
-            throw new NotImplementedException();
+            var length = this.items.Count;
+
+            for (int i = length - 1; i >= 1; i--)
+            {
+                var newPosition = random.Next(0, i + 1);
+                this.Swap(i, newPosition);
+            }
         }
 
         public void PrintAllItemsOnConsole()
@@ -71,6 +108,13 @@
             }
 
             return copy;
+        }
+
+        private void Swap(int currentIndex, int newIndex)
+        {
+            var temp = this.items[currentIndex];
+            this.items[currentIndex] = this.items[newIndex];
+            this.items[newIndex] = temp;
         }
     }
 }
