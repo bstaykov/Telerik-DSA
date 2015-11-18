@@ -4,184 +4,70 @@
 
     public class Program
     {
-        private static int n;
-        private const int K = 2;
-        //private static decimal[] denominators;
-        private static decimal[] arr = new decimal[K];
+        private static int maxDenominator;
         private static int maxPrecisionMatchLength = 0;
         private static decimal minDenominator = 100000;
         private static decimal minNominator = 100000;
-        private static string inputNumber;
-        private static int inputNumberLength;
-        private static decimal last = 0;
-        private static decimal num = 0;
-
+        private static string number;
+        private static string fraction;
 
         private static void Main()
         {
-            //Precisions("42", "0.141592658");
-            //Precisions("3", "0.1337");
-            Precisions("80000", "0.1234567891011121314151617181920");
-            //Precisions("1000", "0.42");
-            //Precisions("100", "0.420");
-            //Precisions("115", "0.141592658");
-            //Precisions(null, null);
+            // Console.WriteLine(CountMatches("141", 1, 7));
+            // Precisions("42", "0.141592658");
+            // Precisions("3", "0.1337");
+            // Precisions("80000", "0.1234567891011121314151617181920");
+            // Precisions("1000", "0.42");
+            // Precisions("100", "0.420");
+            // Precisions("115", "0.141592658");
+            Precisions(null, null);
         }
 
-        private static void Precisions(string denominatorString, string numberString)
+        private static void Precisions(string denominatorString = null, string numberString = null)
         {
             if (denominatorString != null && numberString != null)
             {
-                Console.WriteLine();
-                n = int.Parse(denominatorString);
-                inputNumber = numberString;
+                maxDenominator = int.Parse(denominatorString);
+                number = numberString;
             }
             else
             {
-                n = int.Parse(Console.ReadLine());
-                inputNumber = Console.ReadLine();
+                maxDenominator = int.Parse(Console.ReadLine());
+                number = Console.ReadLine();
             }
 
-            decimal inputAsDecimal = decimal.Parse(inputNumber);
-            //int firstNumber = int.Parse(inputNumber.Substring(2));
-            //string ddd = inputNumber.Substring(2);
-            inputNumberLength = inputNumber.Length;
+            fraction = number.Substring(2);
 
-            for (decimal nominator = 1; nominator < n; nominator++)
+            for (int nominator = 0; nominator < maxDenominator; nominator++)
             {
-                last = 0;
-                for (int denominator = n; denominator > nominator; denominator--)
+                int leftIndex = nominator + 1;
+                int rightIndex = maxDenominator;
+                int middleIndex = maxDenominator;
+                while (leftIndex < rightIndex)
                 {
-                    int dif = (denominator - (int)nominator) / 2;
-
-                    while (dif >= 1)
+                    middleIndex = (leftIndex + rightIndex) / 2;
+                    bool isBigger = CompareFraction(nominator, middleIndex);
+                    if (!isBigger)
                     {
-                        var tempNumber = (nominator / (denominator - dif));
-                        if (denominator - dif > nominator && tempNumber <= inputAsDecimal)
-                        {
-                            denominator -= dif;
-                        }
-
-                        dif = dif / 2;
+                        rightIndex = middleIndex;
+                        CheckMaxMatches(CountMatches(nominator, middleIndex), nominator, middleIndex);
                     }
-
-                    num = nominator / denominator;
-                    if (last > inputAsDecimal && num > inputAsDecimal)
+                    else
                     {
-                        break;
-                    }
-
-                    last = num;
-
-                    string number = num.ToString() + "0";
-                    var precisionMatchLength = 0;
-                    var length = number.Length < inputNumber.Length ? number.Length : inputNumber.Length;
-
-                    for (int i = 2; i < length; i++)
-                    {
-                        if (number[i] == inputNumber[i])
-                        {
-                            precisionMatchLength = i;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-
-                    if (precisionMatchLength == 0)
-                    {
-                    }
-                    else if (precisionMatchLength > maxPrecisionMatchLength)
-                    {
-                        maxPrecisionMatchLength = precisionMatchLength;
-                        minDenominator = denominator;
-                        minNominator = nominator;
-                    }
-                    else if (precisionMatchLength == maxPrecisionMatchLength)
-                    {
-                        if (minDenominator > denominator)
-                        {
-                            minDenominator = denominator;
-                            minNominator = nominator;
-                        }
-                        else if (minDenominator == denominator)
-                        {
-                            if (minNominator > nominator)
-                            {
-                                minNominator = nominator;
-                            }
-                        }
+                        leftIndex = middleIndex + 1;
+                        CheckMaxMatches(CountMatches(nominator, middleIndex), nominator, middleIndex);
                     }
                 }
+
+                CheckMaxMatches(CountMatches(nominator, middleIndex), nominator, middleIndex);
+
+                // int current = CountMatches(nominator, leftIndex);
+                // CheckMaxMatches(current, nominator, leftIndex);
+                // current = CountMatches(nominator, middleIndex);
+                // CheckMaxMatches(current, nominator, middleIndex);
+                // current = CountMatches(nominator, rightIndex);
+                // CheckMaxMatches(current, nominator, rightIndex);
             }
-
-            //for (decimal nominator = n; nominator >= 1; nominator--)
-            //{
-            //    last = 0;
-            //    for (decimal denominator = nominator; denominator <= n; denominator++)
-            //    {
-            //        num = nominator / denominator;
-            //        if (last < inputAsDecimal && num < inputAsDecimal)
-            //        {
-            //            break;
-            //        }
-            //    }
-            //}
-
-            //for (decimal nominator = n; nominator >= 1; nominator--)
-            //{
-            //    last = 0;
-            //    for (decimal denominator = n; denominator >= nominator; denominator--)
-            //    {
-            //        var num = nominator / denominator;
-            //        if (last > inputAsDecimal && num > inputAsDecimal)
-            //        {
-            //            break;
-            //        }
-
-            //        last = num;
-            //    }
-            //}
-
-            //for (decimal nominator = 1; nominator <= n; nominator++)
-            //{
-            //    last = 0;
-            //    for (decimal denominator = nominator; denominator <= n; denominator++)
-            //    {
-            //        var num = nominator / denominator;
-            //        if (last < inputAsDecimal && num < inputAsDecimal)
-            //        {
-            //            break;
-            //        }
-
-            //        last = num;
-            //    }
-            //}
-
-            //for (decimal denominator = 1; denominator <= n; denominator++)
-            //{
-            //    last = 0;
-            //    for (decimal nominator = denominator; nominator >= 1; nominator--)
-            //    {
-            //        var num = nominator / denominator;
-            //        if (last < inputAsDecimal && num < inputAsDecimal)
-            //        {
-            //            break;
-            //        }
-
-            //        last = num;
-            //    }
-            //}
-
-            //for (decimal denominator = n; denominator >= 1; denominator--)
-            //    for (decimal nominator = denominator; nominator >= 1; nominator--)
-
-            //for (decimal denominator = n; denominator >= 1; denominator--)
-            //    for (decimal nominator = 1; nominator <= denominator; nominator++)
-
-            //for (decimal denominator = 1; denominator <= n; denominator++)
-            //    for (decimal nominator = 1; nominator <= denominator; nominator++)
 
             if (maxPrecisionMatchLength == 0)
             {
@@ -191,8 +77,73 @@
             else
             {
                 Console.WriteLine("{0}/{1}", minNominator, minDenominator);
-                Console.WriteLine(maxPrecisionMatchLength);
+                Console.WriteLine(maxPrecisionMatchLength + 1);
             }
+        }
+
+        private static void CheckMaxMatches(int precisionMatchLength, int nominator, int denominator)
+        {
+            if (precisionMatchLength > maxPrecisionMatchLength)
+            {
+                maxPrecisionMatchLength = precisionMatchLength;
+                minDenominator = denominator;
+                minNominator = nominator;
+            }
+            else if (precisionMatchLength == maxPrecisionMatchLength)
+            {
+                if (minDenominator > denominator)
+                {
+                    minDenominator = denominator;
+                    minNominator = nominator;
+                }
+                else if (minDenominator == denominator)
+                {
+                    if (minNominator > nominator)
+                    {
+                        minNominator = nominator;
+                    }
+                }
+            }
+        }
+
+        private static int CountMatches(int nominator, int denominator)
+        {
+            nominator *= 10;
+            int i;
+            for (i = 0; i < fraction.Length; i++)
+            {
+                int digit = nominator / denominator;
+                if (digit != fraction[i] - '0')
+                {
+                    break;
+                }
+
+                nominator = (nominator % denominator) * 10;
+            }
+
+            return i;
+        }
+
+        private static bool CompareFraction(int nominator, int denominator)
+        {
+            nominator *= 10;
+            int i;
+            for (i = 0; i < fraction.Length; i++)
+            {
+                int digit = nominator / denominator;
+                if (digit < fraction[i] - '0')
+                {
+                    return false;
+                }
+                else if (digit > fraction[i] - '0')
+                {
+                    return true;
+                }
+
+                nominator = (nominator % denominator) * 10;
+            }
+
+            return true;
         }
     }
 }
