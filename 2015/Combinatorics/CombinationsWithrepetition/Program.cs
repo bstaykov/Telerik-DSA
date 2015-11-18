@@ -48,10 +48,10 @@
 
         private static void Main()
         {
-            GenerateCombinationsNoRepetitions(0, 0);
+            GenerateCombinationsWithRepetitions(0, 0);
         }
 
-        private static void GenerateCombinationsNoRepetitions(int index, int start)
+        private static void GenerateCombinationsWithRepetitions(int index, int start)
         {
             if (index >= K)
             {
@@ -62,7 +62,7 @@
                 for (int i = start; i < N; i++)
                 {
                     arr[index] = i;
-                    GenerateCombinationsNoRepetitions(index + 1, i);
+                    GenerateCombinationsWithRepetitions(index + 1, i);
                 }
             }
         }
