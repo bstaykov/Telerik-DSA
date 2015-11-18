@@ -33,6 +33,7 @@
         [TestMethod]
         public void Test_BinarySearch_ShouldReturnTrue_WhenItemIsContainedInTheCollection()
         {
+            collection.Sort(new QuickSorter<int>());
             var isContained = collection.BinarySearch(1);
             Assert.IsTrue(isContained, "BinarySearch should return true when element is contained in the collection.");
         }
@@ -42,25 +43,6 @@
         {
             var isContained = collection.BinarySearch(0);
             Assert.IsFalse(isContained, "BinarySearch should return false when element is not contained in the collection.");
-        }
-
-        [TestMethod]
-        public void Test_BinarySearch_ShouldSortCollection_OnSearch()
-        {
-            collection.BinarySearch(0);
-            bool isSortedCorrectly = true;
-            for (int i = 0; i < collection.Items.Count - 1; i++)
-            {
-                if (collection.Items[i].CompareTo(collection.Items[i + 1]) > 0)
-                {
-                    isSortedCorrectly = false;
-                    break;
-                }
-            }
-
-            var col = string.Join(", ", collection.Items);
-
-            Assert.IsTrue(isSortedCorrectly, "BinarySearch should sort collection on search.");
         }
     }
 }

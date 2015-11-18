@@ -13,7 +13,7 @@
         private static Stopwatch stopWatch = new Stopwatch();
         private static Random random = new Random();
         private static int minRange = 0;
-        private static int maxRange = 100;
+        private static int maxRange = 1000;
         private static int searches = 5;
         private static int shuffles = 10;
 
@@ -44,6 +44,7 @@
 
         private static void TestSearchAlgorithms(SortableCollection<int> collection, int searches)
         {
+            collection.Sort(new QuickSorter<int>());
             for (int i = 0; i < searches; i++)
             {
                 var searchedNumber = GetRandomNumber();

@@ -46,7 +46,6 @@
 
         public bool BinarySearch(T item)
         {
-            this.Sort(new QuickSorter<T>());
             int startIndex = 0;
             int endIndex = this.items.Count - 1;
             int searchedIndex = -1;
