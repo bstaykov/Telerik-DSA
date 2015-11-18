@@ -31,8 +31,6 @@
             bool hasZero = false;
             int minSum = 0;
             int maxSum = 0;
-
-            // int tempMinSum = 0;
             int tempMaxSum = 0;
 
             foreach (var number in numbers)
@@ -42,18 +40,12 @@
                     hasZero = true;
                 }
 
-                // tempMinSum = minSum;
-                // tempMaxSum = maxSum;
                 for (int i = maxSum; i >= minSum; i--)
                 {
                     if (possibleSums[i])
                     {
                         var currentNumber = i + number;
 
-                        // if (tempMinSum > currentNumber)
-                        // {
-                        // tempMinSum = currentNumber;
-                        // }
                         if (tempMaxSum < currentNumber)
                         {
                             tempMaxSum = currentNumber;
@@ -63,7 +55,6 @@
                     }
                 }
 
-                // minSum = tempMinSum;
                 maxSum = tempMaxSum;
             }
 
@@ -125,7 +116,6 @@
                     hasZero = true;
                 }
 
-                tempMinSum = minSum;
                 tempMaxSum = maxSum;
                 for (int i = maxSum; i >= minSum; i--)
                 {
@@ -133,11 +123,7 @@
                     {
                         var currentNumber = i + number;
 
-                        if (tempMinSum > currentNumber)
-                        {
-                            tempMinSum = currentNumber;
-                        }
-                        else if (tempMaxSum < currentNumber)
+                        if (tempMaxSum < currentNumber)
                         {
                             tempMaxSum = currentNumber;
                         }
@@ -146,14 +132,12 @@
                     }
                 }
 
-                minSum = tempMinSum;
                 maxSum = tempMaxSum;
             }
 
             foreach (var number in numbers.Where(n => n < 0))
             {
                 tempMinSum = minSum;
-                tempMaxSum = maxSum;
                 for (int i = minSum; i <= maxSum; i++)
                 {
                     if (possibleSums[i])
@@ -168,17 +152,12 @@
                         {
                             tempMinSum = currentNumber;
                         }
-                        else if (tempMaxSum < currentNumber)
-                        {
-                            tempMaxSum = currentNumber;
-                        }
 
                         possibleSums[currentNumber] = true;
                     }
                 }
 
                 minSum = tempMinSum;
-                maxSum = tempMaxSum;
             }
 
             var sums = new List<int>();
