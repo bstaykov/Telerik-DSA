@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recursion", "Recursion\Recu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubsetSums", "SubsetSums\SubsetSums.csproj", "{BF848B54-A3A0-45FA-9886-E696C8CA2E0E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubsetsSumTests", "SubsetsSumTests\SubsetsSumTests.csproj", "{D4148D75-DB89-451C-B89E-5626ED48E41A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BF848B54-A3A0-45FA-9886-E696C8CA2E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF848B54-A3A0-45FA-9886-E696C8CA2E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF848B54-A3A0-45FA-9886-E696C8CA2E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4148D75-DB89-451C-B89E-5626ED48E41A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4148D75-DB89-451C-B89E-5626ED48E41A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4148D75-DB89-451C-B89E-5626ED48E41A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4148D75-DB89-451C-B89E-5626ED48E41A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
