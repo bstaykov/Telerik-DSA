@@ -5,12 +5,12 @@
 
     public static class LongestCommonSubsequenceCalculator3D
     {
-        public static int[, ,] DrawLongestCommonSequenceMatrix(string height, string width, string depth)
+        public static int[,,] DrawLongestCommonSequenceMatrix(string height, string width, string depth)
         {
             int x = height.Length;
             int y = width.Length;
             int z = depth.Length;
-            int[, ,] matrix3D = new int[x + 1, y + 1, z + 1];
+            int[,,] matrix3D = new int[x + 1, y + 1, z + 1];
 
             for (int i = 1; i < matrix3D.GetLength(0); i++)
             {
@@ -45,7 +45,7 @@
             return matrix3D;
         }
 
-        public static string ExtractSequence(int[, ,] matrix, string height, string width, string depth)
+        public static string ExtractSequence(int[,,] matrix, string height, string width, string depth)
         {
             int x = height.Length;
             int y = width.Length;
