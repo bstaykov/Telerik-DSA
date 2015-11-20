@@ -23,6 +23,76 @@
                 new Product("Ракия", 3, 5),
             };
             FindHighestCostAndWeightBagNoDuplicates(products, maxWeight);
+
+            maxWeight = 23;
+            products = new Product[] 
+            {
+                new Product("Трошия", 6, 6),
+                new Product("Сланина", 8, 7),
+                new Product("Ракия", 7, 7),
+            };
+            FindHighestCostAndWeightBagWithDuplicates(products, maxWeight);
+        }
+                
+        private static void FindHighestCostAndWeightBagNoDuplicates(int[] weights, int[] costs, int maxBasketWeight)
+        {
+            if (weights.Length != costs.Length)
+            {
+                throw new ArgumentException("Weights and costs length should be equal!");
+            }
+
+            bool[] possibleWeights = new bool[maxBasketWeight + 1];
+            int[] possibleCosts = new int[maxBasketWeight + 1];
+            possibleWeights[0] = true;
+            int maxWeight = 0;
+            int tempMaxWeight = 0;
+            int maxCostIndex = 0;
+
+            for (int j = 0; j < weights.Length; j++)
+            {
+                for (int i = maxWeight; i >= 0; i--)
+                {
+                    if (possibleWeights[i])
+                    {
+                        var currentWeight = i + weights[j];
+                        if (currentWeight > maxBasketWeight)
+                        {
+                            continue;
+                        }
+
+                        if (tempMaxWeight < currentWeight)
+                        {
+                            tempMaxWeight = currentWeight;
+                        }
+
+                        var newCost = possibleCosts[i] + costs[j];
+                        if (possibleCosts[currentWeight] < newCost)
+                        {
+                            possibleCosts[currentWeight] = newCost;
+
+                            if (possibleCosts[maxCostIndex] <= newCost)
+                            {
+                                maxCostIndex = currentWeight;
+                            }
+                        }
+
+                        possibleWeights[currentWeight] = true;
+                    }
+                }
+
+                maxWeight = tempMaxWeight;
+            }
+
+            //var maxCostIndex = maxWeight;
+            //for (int i = maxWeight - 1; i >= 0; i--)
+            //{
+            //    if (possibleCosts[i] > possibleCosts[maxCostIndex])
+            //    {
+            //        maxCostIndex = i;
+            //    }
+            //}
+
+            Console.WriteLine("Weight: {0} Cost: {1}", maxCostIndex, possibleCosts[maxCostIndex]);
         }
 
         private static void FindHighestCostAndWeightBagNoDuplicates(Product[] products, int maxBasketWeight)
@@ -33,6 +103,7 @@
             possibleWeights[0] = true;
             int maxWeight = 0;
             int tempMaxWeight = 0;
+            int maxCostIndex = 0;
 
             foreach (var product in products)
             {
@@ -64,6 +135,11 @@
                             {
                                 possibleProducts[currentWeight] = currentProducts + ", " + product.Name;
                             }
+
+                            if (possibleCosts[maxCostIndex] <= newCost)
+                            {
+                                maxCostIndex = currentWeight;
+                            }
                         }
 
                         possibleWeights[currentWeight] = true;
@@ -71,73 +147,57 @@
                 }
 
                 maxWeight = tempMaxWeight;
-            }
-
-            var maxCostIndex = maxWeight;
-            for (int i = maxWeight - 1; i >= 0; i--)
-            {
-                if (possibleWeights[i] && possibleCosts[i] > possibleCosts[maxCostIndex])
-                {
-                    maxCostIndex = i;
-                }
             }
 
             Console.WriteLine("\nПродукти: {0} \nТегло: {1} \nСтойност: {2}\n", possibleProducts[maxCostIndex], maxCostIndex, possibleCosts[maxCostIndex]);
         }
         
-        private static void FindHighestCostAndWeightBagNoDuplicates(int[] weights, int[] costs, int maxBasketWeight)
+        private static void FindHighestCostAndWeightBagWithDuplicates(Product[] products, int maxBasketWeight)
         {
-            if (weights.Length != costs.Length)
-            {
-                throw new ArgumentException("Weights and costs length should be equal!");
-            }
-
             bool[] possibleWeights = new bool[maxBasketWeight + 1];
             int[] possibleCosts = new int[maxBasketWeight + 1];
+            string[] possibleProducts = new string[maxBasketWeight + 1];
             possibleWeights[0] = true;
-            int maxWeight = 0;
-            int tempMaxWeight = 0;
+            int maxCostIndex = 0;
 
-            for (int j = 0; j < weights.Length; j++)
+            foreach (var product in products)
             {
-                for (int i = maxWeight; i >= 0; i--)
+                for (int i = 0; i <= maxBasketWeight; i++)
                 {
                     if (possibleWeights[i])
                     {
-                        var currentWeight = i + weights[j];
+                        var currentWeight = i + product.Weight;
                         if (currentWeight > maxBasketWeight)
                         {
                             continue;
                         }
 
-                        if (tempMaxWeight < currentWeight)
-                        {
-                            tempMaxWeight = currentWeight;
-                        }
-
-                        var newCost = possibleCosts[i] + costs[j];
+                        var newCost = possibleCosts[i] + product.Price;
                         if (possibleCosts[currentWeight] < newCost)
                         {
                             possibleCosts[currentWeight] = newCost;
+                            var currentProducts = possibleProducts[i];
+                            if (currentProducts == null)
+                            {
+                                possibleProducts[currentWeight] = product.Name;
+                            }
+                            else
+                            {
+                                possibleProducts[currentWeight] = currentProducts + ", " + product.Name;
+                            }
+
+                            if (possibleCosts[maxCostIndex] <= newCost)
+                            {
+                                maxCostIndex = currentWeight;
+                            }
                         }
 
                         possibleWeights[currentWeight] = true;
                     }
                 }
-
-                maxWeight = tempMaxWeight;
             }
-
-            var maxCostIndex = maxWeight;
-            for (int i = maxWeight - 1; i >= 0; i--)
-            {
-                if (possibleCosts[i] > possibleCosts[maxCostIndex])
-                {
-                    maxCostIndex = i;
-                }
-            }
-
-            Console.WriteLine("Weight: {0} Cost: {1}", maxCostIndex, possibleCosts[maxCostIndex]);
+            
+            Console.WriteLine("\nПродукти: {0} \nТегло: {1} \nСтойност: {2}\n", possibleProducts[maxCostIndex], maxCostIndex, possibleCosts[maxCostIndex]);
         }
     }
 }
