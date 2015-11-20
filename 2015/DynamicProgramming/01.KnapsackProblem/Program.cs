@@ -83,15 +83,6 @@
                 maxWeight = tempMaxWeight;
             }
 
-            //var maxCostIndex = maxWeight;
-            //for (int i = maxWeight - 1; i >= 0; i--)
-            //{
-            //    if (possibleCosts[i] > possibleCosts[maxCostIndex])
-            //    {
-            //        maxCostIndex = i;
-            //    }
-            //}
-
             Console.WriteLine("Weight: {0} Cost: {1}", maxCostIndex, possibleCosts[maxCostIndex]);
         }
 
