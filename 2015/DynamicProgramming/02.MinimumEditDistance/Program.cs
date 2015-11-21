@@ -94,28 +94,22 @@
                 else
                 {
                     // NO MORE COMMON
-
-                    // EXTRA CHARS
                     if (first.Length > second.Length)
                     {
+                        // DELETE EXTRA CHARS
                         Console.WriteLine("DELETE -> {0}", first[firstIndex]);
                         minimumEditDistance += 0.9;
                         first.Remove(firstIndex, 1);
                         continue;
                     }
-
-                    // INSERT
-                    if (firstIndex == first.Length)
+                    else if (firstIndex == first.Length)
                     {
+                        // INSERT MISSING CHARS
                         Console.WriteLine("INSERT -> {0}", second[secondIndex]);
                         minimumEditDistance += 0.8;
                         first.Append(second[secondIndex]);
                         firstIndex++;
                         secondIndex++;
-                    }
-                    else if (first[firstIndex] == second[secondIndex])
-                    {
-                        continue;
                     }
                     else
                     {
