@@ -26,6 +26,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.Tribonacci", "03.Tribona
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.SupperSum", "03.SupperSum\03.SupperSum.csproj", "{0038600A-31AA-4E7A-BC35-EC99F4968B63}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.BracketsVariations", "03.Brackets\03.BracketsVariations.csproj", "{06DC2660-5B9D-44C6-B91B-DE2B5A9E7BBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.BracketsRecursive", "03.BracketsRecursive\03.BracketsRecursive.csproj", "{F925494C-BAE9-4AB2-A7D7-709D1D4ECAEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +72,14 @@ Global
 		{0038600A-31AA-4E7A-BC35-EC99F4968B63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0038600A-31AA-4E7A-BC35-EC99F4968B63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0038600A-31AA-4E7A-BC35-EC99F4968B63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06DC2660-5B9D-44C6-B91B-DE2B5A9E7BBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06DC2660-5B9D-44C6-B91B-DE2B5A9E7BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06DC2660-5B9D-44C6-B91B-DE2B5A9E7BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06DC2660-5B9D-44C6-B91B-DE2B5A9E7BBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F925494C-BAE9-4AB2-A7D7-709D1D4ECAEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F925494C-BAE9-4AB2-A7D7-709D1D4ECAEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F925494C-BAE9-4AB2-A7D7-709D1D4ECAEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F925494C-BAE9-4AB2-A7D7-709D1D4ECAEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
