@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dijkstra", "Dijkstra\Dijkst
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopologicalSorting", "TopologicalSorting\TopologicalSorting.csproj", "{DEC1F170-BFED-4A0F-81F0-23668ACC355D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimsAlgorithm", "PrimsAlgorithm\PrimsAlgorithm.csproj", "{C770AE5E-89DF-4FBC-B749-517085279AAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KruskalsAlgorithm", "KruskalsAlgorithm\KruskalsAlgorithm.csproj", "{813375E3-B839-41CC-8AE8-194213A149B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{DEC1F170-BFED-4A0F-81F0-23668ACC355D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEC1F170-BFED-4A0F-81F0-23668ACC355D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEC1F170-BFED-4A0F-81F0-23668ACC355D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C770AE5E-89DF-4FBC-B749-517085279AAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C770AE5E-89DF-4FBC-B749-517085279AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C770AE5E-89DF-4FBC-B749-517085279AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C770AE5E-89DF-4FBC-B749-517085279AAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{813375E3-B839-41CC-8AE8-194213A149B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{813375E3-B839-41CC-8AE8-194213A149B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{813375E3-B839-41CC-8AE8-194213A149B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{813375E3-B839-41CC-8AE8-194213A149B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
