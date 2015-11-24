@@ -35,25 +35,25 @@
         public int FindMinimumSpanningTree()
         {
             this.edges.Sort();
-            int[] visitedTrees = new int[this.n + 1]; // we start from 1, not from 0
+            int[] visitedEdges = new int[this.n + 1]; // we start from 1, not from 0
             var mpdEdges = new List<EdgeWeighted>();
             int treesCount = 1;
 
             foreach (var edge in this.edges)
             { 
                 // not visited
-                if (visitedTrees[edge.StartNode] == 0)
+                if (visitedEdges[edge.StartNode] == 0)
                 {
                     // both ends are not visited
-                    if (visitedTrees[edge.EndNode] == 0)
+                    if (visitedEdges[edge.EndNode] == 0)
                     {
-                        visitedTrees[edge.StartNode] = visitedTrees[edge.EndNode] = treesCount;
+                        visitedEdges[edge.StartNode] = visitedEdges[edge.EndNode] = treesCount;
                         treesCount++;
                     }
                     else
                     {
                         // attach the start node to the tree of the end node
-                        visitedTrees[edge.StartNode] = visitedTrees[edge.EndNode];
+                        visitedEdges[edge.StartNode] = visitedEdges[edge.EndNode];
                     }
 
                     mpdEdges.Add(edge);
@@ -61,22 +61,22 @@
                 else
                 {
                     // the start is part of a tree
-                    if (visitedTrees[edge.EndNode] == 0)
+                    if (visitedEdges[edge.EndNode] == 0)
                     {
                         // attach the end node to the tree;
-                        visitedTrees[edge.EndNode] = visitedTrees[edge.StartNode];
+                        visitedEdges[edge.EndNode] = visitedEdges[edge.StartNode];
                         mpdEdges.Add(edge);
                     }
-                    else if (visitedTrees[edge.EndNode] != visitedTrees[edge.StartNode])
+                    else if (visitedEdges[edge.EndNode] != visitedEdges[edge.StartNode])
                     {
                         // combine the trees
-                        int oldTreeNumber = visitedTrees[edge.EndNode];
+                        int oldTreeNumber = visitedEdges[edge.EndNode];
 
-                        for (int i = 0; i < visitedTrees.Length; i++)
+                        for (int i = 0; i < visitedEdges.Length; i++)
                         {
-                            if (visitedTrees[i] == oldTreeNumber)
+                            if (visitedEdges[i] == oldTreeNumber)
                             {
-                                visitedTrees[i] = visitedTrees[edge.StartNode];
+                                visitedEdges[i] = visitedEdges[edge.StartNode];
                             }
                         }
 
