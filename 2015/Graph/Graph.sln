@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimsAlgorithm", "PrimsAlgo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KruskalsAlgorithm", "KruskalsAlgorithm\KruskalsAlgorithm.csproj", "{813375E3-B839-41CC-8AE8-194213A149B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.FriendsOfPeshoDijkstra", "01.FriendsOfPeshoDijkstra\01.FriendsOfPeshoDijkstra.csproj", "{8A64819E-D914-495C-AB98-EA592553324C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{813375E3-B839-41CC-8AE8-194213A149B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{813375E3-B839-41CC-8AE8-194213A149B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{813375E3-B839-41CC-8AE8-194213A149B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A64819E-D914-495C-AB98-EA592553324C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A64819E-D914-495C-AB98-EA592553324C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A64819E-D914-495C-AB98-EA592553324C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A64819E-D914-495C-AB98-EA592553324C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
