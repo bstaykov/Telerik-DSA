@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8A64819E-D914-495C-AB98-EA592553324C}</ProjectGuid>
+    <ProjectGuid>{FD0477C3-92AD-4F80-B7AF-265FA017CC4F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_01.FriendsOfPeshoDijkstra</RootNamespace>
-    <AssemblyName>01.FriendsOfPeshoDijkstra</AssemblyName>
+    <RootNamespace>_01.Salaries</RootNamespace>
+    <AssemblyName>01.Salaries</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,7 +47,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="05_Условие на задачата.doc" />
+    <None Include="04. Заплати_Условие на задачата.doc" />
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
