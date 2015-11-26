@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Staircases", "Staircases\St
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Friends", "Friends\Friends.csproj", "{DD598DDC-6F09-4438-8639-5FE07ABD0486}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matchmaker", "Matchmaker\Matchmaker.csproj", "{FE9E81D8-8C3F-4ED6-831E-199F9AD31E86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{DD598DDC-6F09-4438-8639-5FE07ABD0486}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD598DDC-6F09-4438-8639-5FE07ABD0486}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD598DDC-6F09-4438-8639-5FE07ABD0486}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE9E81D8-8C3F-4ED6-831E-199F9AD31E86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE9E81D8-8C3F-4ED6-831E-199F9AD31E86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE9E81D8-8C3F-4ED6-831E-199F9AD31E86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE9E81D8-8C3F-4ED6-831E-199F9AD31E86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
