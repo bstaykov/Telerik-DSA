@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class Program
+    public class Program 
     {
         // private static char[] text;
         private static string text;
