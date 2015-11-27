@@ -2,6 +2,11 @@
 {
     using System;
 
+    /// <summary>
+    /// Test for match at every possible position 
+    /// Simple but inefficient 
+    /// Quadratic in time (worstcase)
+    /// </summary>
     public class StartUp
     {
         public static void Main(string[] args)

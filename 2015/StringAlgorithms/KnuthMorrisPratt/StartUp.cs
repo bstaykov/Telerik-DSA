@@ -2,6 +2,13 @@
 {
     using System;
 
+    /// <summary>
+    /// Makes use of previous match info 
+    /// "Partial match" table is precomputed 
+    /// Linear in time 
+    /// Unneeded checks are skipped 
+    /// Linear in time
+    /// </summary>
     public class StartUp
     {
         public static void Main()
@@ -32,7 +39,7 @@
                 fl[i + 1] = j + 1;
             }
 
-            // search
+            // search 
             int matched = 0;
             for (int i = 0; i < textLength; i++)
             {
