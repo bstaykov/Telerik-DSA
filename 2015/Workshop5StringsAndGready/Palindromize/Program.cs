@@ -49,37 +49,11 @@
             }
         }
 
-        private static void FindPalindromeWithSubstrings()
-        {
-            string input = Console.ReadLine();
-            string reversed = string.Join(string.Empty, input.Reverse());
-
-            if (IsPalindrom(input))
-            {
-                Console.WriteLine(input);
-                return;
-            }
-
-            for (int i = 0; i < input.Length - 1; i++)
-            {
-                var palindromeCandidate = input + reversed.Substring(input.Length - 1 - i, 1 + i);
-                if (IsPalindrom(palindromeCandidate))
-                {
-                    Console.WriteLine(palindromeCandidate);
-                    return;
-                }
-            }
-        }
-
         private static bool IsPalindrom(int length)
         {
             for (int i = length; i < (inputAsChars.Length + length) / 2; i++)
             {
-                var a = inputAsChars[i];
-                if (length - i > 0)
-                {
-                }
-                else if (inputAsChars[i] != inputAsChars[inputAsChars.Length - i + length - 1])
+                if (length - i <= 0 && inputAsChars[i] != inputAsChars[inputAsChars.Length - i + length - 1])
                 {
                     return false;
                 }
@@ -112,6 +86,28 @@
             }
 
             return true;
+        }
+
+        private static void FindPalindromeWithSubstrings()
+        {
+            string input = Console.ReadLine();
+            string reversed = string.Join(string.Empty, input.Reverse());
+
+            if (IsPalindrom(input))
+            {
+                Console.WriteLine(input);
+                return;
+            }
+
+            for (int i = 0; i < input.Length - 1; i++)
+            {
+                var palindromeCandidate = input + reversed.Substring(input.Length - 1 - i, 1 + i);
+                if (IsPalindrom(palindromeCandidate))
+                {
+                    Console.WriteLine(palindromeCandidate);
+                    return;
+                }
+            }
         }
     }
 }
