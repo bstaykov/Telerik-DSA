@@ -14,18 +14,18 @@
 
         private static void FindMajorant(int[] numbers)
         {
-            var majorants = new List<int>();
+            var checkedNumbers = new HashSet<int>();
             int length = numbers.Length;
-            int minLengthForMajorant = (length / 2) + 1;
+            int minCountForMajorant = (length / 2) + 1;
 
             for (int i = 0; i < length; i++)
             {
                 var number = numbers[i];
-                if (majorants.Contains(number) == false)
+                if (checkedNumbers.Contains(number) == false)
                 {
                     var occurence = numbers.Where(n => n == number).Count();
-                    majorants.Add(number);
-                    if (occurence >= minLengthForMajorant)
+                    checkedNumbers.Add(number);
+                    if (occurence >= minCountForMajorant)
                     {
                         Console.WriteLine("Majorant: {0} Occurence: {1}", number, occurence);
                     }
