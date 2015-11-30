@@ -33,48 +33,33 @@
                     // add in queue
                     for (int i = 0; i < 3; i++)
                     {
-                        for (int j = 0; j < skip + 1; j++)
+                        for (int j = 0; j < length; j++)
                         {
                             newQueue.Enqueue(numbers[j]);
                         }
 
-                        int lastAdded;
+                        int lastAdded = 0;
                         if (i == 0)
                         {
                             lastAdded = lastNumberDequed + 1;
-                            if (lastAdded == m)
-                            {
-                                numbers.Add(lastAdded);
-                                Console.WriteLine(string.Join(" => ", numbers));
-                                return;
-                            }
-
-                            newQueue.Enqueue(lastAdded);
                         }
                         else if (i == 1)
                         {
                             lastAdded = lastNumberDequed + 2;
-                            if (lastAdded == m)
-                            {
-                                numbers.Add(lastAdded);
-                                Console.WriteLine(string.Join(" => ", numbers));
-                                return;
-                            }
-
-                            newQueue.Enqueue(lastAdded);
                         }
                         else if (i == 2)
                         {
                             lastAdded = lastNumberDequed * 2;
-                            if (lastAdded == m)
-                            {
-                                numbers.Add(lastAdded);
-                                Console.WriteLine(string.Join(" => ", numbers));
-                                return;
-                            }
-
-                            newQueue.Enqueue(lastAdded);
                         }
+
+                        if (lastAdded == m)
+                        {
+                            numbers.Add(lastAdded);
+                            Console.WriteLine(string.Join(" => ", numbers));
+                            return;
+                        }
+
+                        newQueue.Enqueue(lastAdded);
                     }
                 }
 
