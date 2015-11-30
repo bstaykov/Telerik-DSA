@@ -10,25 +10,25 @@
     {
         public static void Main(string[] args)
         {
-            var courses = new string[] { "SQL", "PHP", "CSS", "JAVA", "'Враца Софтуер'", "JAVA", "SQL", "PHP", "CSS" };
-            var dictionary = new Dictionary<string, int>();
+            var courses = new string[] { "SQL", "PHP", "CSS", "PHP", "CSS", "JAVA", "'Враца Софтуер'", "JAVA", "SQL", "PHP", "CSS" };
+            var oddCourses = new HashSet<string>();
 
             for (int i = 0; i < courses.Length; i++)
             {
                 var course = courses[i];
-                if (!dictionary.ContainsKey(course))
+                if (!oddCourses.Contains(course))
                 {
-                    dictionary[course] = 1;
+                    oddCourses.Add(course);
                 } 
                 else 
                 {
-                    dictionary.Remove(course);
+                    oddCourses.Remove(course);
                 }
             }
 
-            foreach (var course in dictionary)
+            foreach (var course in oddCourses)
             {
-                Console.WriteLine("{0}", course.Key);
+                Console.WriteLine("{0}", course);
             }
         }
     }
