@@ -14,20 +14,19 @@
 
         private static void CountNumberOccurences(List<int> numbers)
         {
-            int[] occurencess = new int[1000];
-            for (int i = 0; i < numbers.Count; i++)
+            var length = 1001;
+            int[] occurencess = new int[length];
+            bool[] numbersContained = new bool[length];
+            for (int i = 0; i < length; i++)
             {
                 int currentNumber = numbers[i];
-                if (occurencess[currentNumber] == 0)
-                {
-                    int occurenceCount = numbers.Where(n => n == currentNumber).Count();
-                    occurencess[currentNumber] = occurenceCount;
-                }
+                numbersContained[currentNumber] = true;
+                occurencess[currentNumber] += 1;
             }
 
-            for (int i = 0; i < occurencess.Length; i++)
+            for (int i = 0; i < length; i++)
             {
-                if (occurencess[i] != 0)
+                if (numbersContained[i])
                 {
                     Console.WriteLine("{0} → {1} times", i, occurencess[i]);
                 }
