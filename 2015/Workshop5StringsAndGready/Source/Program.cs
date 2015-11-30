@@ -17,9 +17,9 @@
             ReadInput();
             CountPMatches();
             Console.WriteLine(pmatches);
-            Console.WriteLine(offsetsSum);
 
-            // Console.WriteLine(string.Join(" ", offsets));
+            // Console.WriteLine(offsetsSum);
+            Console.WriteLine(string.Join(" ", offsets));
         }
 
         private static void CountPMatches()
@@ -38,11 +38,10 @@
                         {
                             pmatches += 1;
                             var offset = CalculateOffset(textTokenIndex, patternFirstTokenIndex);
-
-                            // offsets.Add(offset + 1);
-                            offsetsSum += offset + 1;
-                            lastOffsetIndex = textTokenIndex - patternFirstTokenIndex + pattern.Length;
-                            startIndex = lastOffsetIndex;
+                            offsets.Add(offset + 1);
+                            
+                            // offsetsSum += offset + 1;
+                            startIndex = textTokenIndex - patternFirstTokenIndex + pattern.Length + 1;
                         }
                     }
                 } 
@@ -50,14 +49,54 @@
             }
             else
             {
-                // big mess
+                for (int i = 0; i < text.Length; i++)
+                {
+                    if (IsPMatchNoTokens(i))
+                    {
+                        pmatches += 1;
+                        offsets.Add(i + 1);
+                    }
+                }
             }
+        }
+
+        private static bool IsPMatchNoTokens(int startIndex)
+        {
+            if (startIndex + pattern.Length > text.Length)
+            {
+                return false;
+            }
+
+            var corespondingMatches = new Dictionary<char, char>();
+            var patternIndex = -1;
+            for (int i = startIndex; i < startIndex + pattern.Length; i++)
+            {
+                patternIndex++;
+                var textChar = text[i];
+                var patternChar = pattern[patternIndex];
+                if (corespondingMatches.ContainsKey(textChar))
+                {
+                    if (corespondingMatches[textChar] == patternChar)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    corespondingMatches.Add(textChar, patternChar);
+                }
+            }
+
+            return true;
         }
 
         private static int CalculateOffset(int textTokenIndex, int patternFirstTokenIndex)
         {
-            var lastTextIndex = textTokenIndex - patternFirstTokenIndex;
-            var offset = lastTextIndex - lastOffsetIndex;
+            var offset = textTokenIndex - patternFirstTokenIndex;
             return offset;
         }
 
@@ -100,12 +139,12 @@
                 }
                 else
                 {
-                    if (corespondingMatches.ContainsKey(patternChar))
+                    if (corespondingMatches.ContainsKey(textChar))
                     {
-                        if (corespondingMatches[patternChar] == textChar)
+                        if (corespondingMatches[textChar] == patternChar)
                         {
                             continue;
-                        } 
+                        }
                         else
                         {
                             return false;
@@ -113,7 +152,7 @@
                     }
                     else
                     {
-                        corespondingMatches.Add(patternChar, textChar);
+                        corespondingMatches.Add(textChar, patternChar);
                     }
                 }
             }
