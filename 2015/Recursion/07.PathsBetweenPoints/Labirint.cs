@@ -84,13 +84,36 @@
             {
                 for (int col = 0; col < this.matrix.GetLength(1); col++)
                 {
+                    SetColor(this.matrix[row, col]);
                     Console.Write(" " + this.matrix[row, col]);
+                    SetDefaultColor();
                 }
 
                 Console.WriteLine();
             }
 
             Console.WriteLine(string.Join(">", this.directions));
+        }
+
+        private void SetDefaultColor()
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+
+        private void SetColor(char p)
+        {
+            if (p == 'o')
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+            }
+            else if (p == '*')
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+            else if (p == 'x')
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
         }
     }
 }
