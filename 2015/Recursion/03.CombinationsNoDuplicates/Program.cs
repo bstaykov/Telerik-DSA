@@ -39,11 +39,7 @@
             for (int i = 1; i <= n; i++)
             {
                 numbers[index] = i;
-                if (index == 0)
-                {
-                    ArrayCombinations(numbers, n, index + 1);
-                }
-                else if (numbers[index - 1] < numbers[index])
+                if (index == 0 || numbers[index - 1] < numbers[index])
                 {
                     ArrayCombinations(numbers, n, index + 1);
                 }
