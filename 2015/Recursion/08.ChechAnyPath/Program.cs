@@ -34,7 +34,7 @@
                 Console.Write("End col: ");
                 endCol = int.Parse(Console.ReadLine());
                 Console.WriteLine("Is Path: {0}", lab.FindPaths(startRow, startCol, endRow, endCol, 'S'));
-                PrintMatrix(copy);
+                PrintMatrixColored(copy);
                 Console.WriteLine();
             }
         }
@@ -72,6 +72,22 @@
             }
         }
 
+        private static void PrintMatrixColored(char[,] matrix)
+        {
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                Console.Write("{0} ", i.ToString().PadLeft(2, '0'));
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    SetColor(matrix[i, j]);
+                    Console.Write(matrix[i, j]);
+                    SetDefaultColor();
+                }
+
+                Console.WriteLine();
+            }
+        }
+
         private static void CopyArray(char[,] original, char[,] copy)
         {
             for (int i = 0; i < original.GetLength(0); i++)
@@ -80,6 +96,31 @@
                 {
                     copy[i, j] = original[i, j];
                 }
+            }
+        }
+        
+        private static void SetDefaultColor()
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+
+        private static void SetColor(char ch)
+        {
+            if (ch == 'o')
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (ch == '*')
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            }
+            else if (ch == 'p')
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+            else if (ch == 'x')
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
             }
         }
     }

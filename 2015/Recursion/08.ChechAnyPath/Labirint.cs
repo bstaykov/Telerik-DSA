@@ -7,6 +7,7 @@
     {
         private const char NotPassable = 'x';
         private const char Visited = 'o';
+        private const char Path = 'p';
         private const char Passable = '*';
         private const char Exit = 'E';
         private const char Start = 's';
@@ -20,13 +21,13 @@
 
         public bool FindPaths(int row, int col, int endRow, int endCol, char direction)
         {
-            if (!this.CheckRowAndCol(row, col))
+            if (!this.IsPossitionInsideMatrix(row, col))
             {
                 return false;
             }
 
             if (this.matrix[row, col] == NotPassable ||
-                    this.matrix[row, col] == Visited)
+                    this.matrix[row, col] == Visited || this.matrix[row, col] == Path)
             {
                 return false;
             }
@@ -34,6 +35,7 @@
             this.directions.Add(direction);
             if (row == endRow && col == endCol)
             {
+                this.MarkPathWhenBacktrackingToStart(row, col);
                 return true;
             }
 
@@ -42,31 +44,40 @@
             // up
             if (this.FindPaths(row - 1, col + 0, endRow, endCol, 'U'))
             {
+                this.MarkPathWhenBacktrackingToStart(row, col);
                 return true;
             }
 
             // right
             if (this.FindPaths(row + 0, col + 1, endRow, endCol, 'R'))
             {
+                this.MarkPathWhenBacktrackingToStart(row, col);
                 return true;
             }
 
             // down
             if (this.FindPaths(row + 1, col + 0, endRow, endCol, 'D'))
             {
+                this.MarkPathWhenBacktrackingToStart(row, col);
                 return true;
             }
 
             // left
             if (this.FindPaths(row + 0, col - 1, endRow, endCol, 'L'))
             {
+                this.MarkPathWhenBacktrackingToStart(row, col);
                 return true;
             }
 
             return false;
         }
 
-        private bool CheckRowAndCol(int row, int col)
+        private void MarkPathWhenBacktrackingToStart(int row, int col)
+        {
+            this.matrix[row, col] = Path;
+        }
+
+        private bool IsPossitionInsideMatrix(int row, int col)
         {
             bool isRowCorrect = 0 <= row && row < this.matrix.GetLength(0);
             bool isColCorrect = 0 <= col && col < this.matrix.GetLength(1);

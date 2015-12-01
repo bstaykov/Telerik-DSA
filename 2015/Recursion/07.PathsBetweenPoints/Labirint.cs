@@ -100,17 +100,17 @@
             Console.ForegroundColor = ConsoleColor.Gray;
         }
 
-        private void SetColor(char p)
+        private void SetColor(char ch)
         {
-            if (p == 'o')
+            if (ch == 'o')
             {
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
             }
-            else if (p == '*')
+            else if (ch == '*')
             {
                 Console.ForegroundColor = ConsoleColor.Green;
             }
-            else if (p == 'x')
+            else if (ch == 'x')
             {
                 Console.ForegroundColor = ConsoleColor.Red;
             }
