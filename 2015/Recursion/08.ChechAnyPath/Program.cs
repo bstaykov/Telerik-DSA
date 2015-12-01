@@ -112,15 +112,31 @@
             }
             else if (ch == '*')
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Gray;
             }
-            else if (ch == 'p')
+            else if (ch == 'U')
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+            }
+            else if (ch == 'R')
             {
                 Console.ForegroundColor = ConsoleColor.Green;
             }
-            else if (ch == 'x')
+            else if (ch == 'D')
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            }
+            else if (ch == 'L')
             {
                 Console.ForegroundColor = ConsoleColor.Red;
+            }
+            else if (ch == 'E')
+            {
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+            }
+            else if (ch == 'x')
+            {
+                Console.ForegroundColor = ConsoleColor.Magenta;
             }
         }
     }

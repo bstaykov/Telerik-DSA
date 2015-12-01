@@ -84,9 +84,9 @@
             {
                 for (int col = 0; col < this.matrix.GetLength(1); col++)
                 {
-                    SetColor(this.matrix[row, col]);
+                    this.SetColor(this.matrix[row, col]);
                     Console.Write(" " + this.matrix[row, col]);
-                    SetDefaultColor();
+                    this.SetDefaultColor();
                 }
 
                 Console.WriteLine();
