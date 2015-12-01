@@ -70,6 +70,9 @@
             return searchedIndex != -1;
         }
 
+        /// <summary>
+        /// Fisher and Yates (The modern algorithm)
+        /// </summary>
         public void Shuffle()
         {
             var length = this.items.Count;

@@ -16,6 +16,8 @@
         private static int maxRange = 1000;
         private static int searches = 5;
         private static int shuffles = 10;
+        private static int shufflesCounterForNewIndexChecking = 100000;
+
 
         public static void Main(string[] args)
         {
@@ -27,6 +29,8 @@
 
             collection = GenerateList(10);
             TestShuffle(collection, shuffles);
+            Console.WriteLine();
+            TestIndexOccurencesAfterShuffle(collection, shufflesCounterForNewIndexChecking);
         }
 
         private static void TestShuffle(SortableCollection<int> collection, int shuffles)
@@ -39,6 +43,40 @@
                 Console.WriteLine("\nShuffle...");
                 copy.Shuffle();
                 copy.PrintAllItemsOnConsole();
+            }
+        }
+
+        private static void TestIndexOccurencesAfterShuffle(SortableCollection<int> collection, int shuffles)
+        {
+            var collectionLength = collection.Items.Count;
+            var indexesDictionary = new Dictionary<int, int[]>(collectionLength);
+            for (int i = 0; i < collectionLength; i++)
+            {
+                indexesDictionary[collection.Items[i]] = new int[collectionLength];
+            }
+
+            for (int i = 0; i < shuffles; i++)
+            {
+                var copy = collection.GetCopy();
+                copy.Shuffle();
+                var firstElementIndex = copy.Items.IndexOf(collection.Items[0]);
+                for (int j = 0; j < collectionLength; j++)
+                {
+                    var number = collection.Items[j];
+                    var index = copy.Items.IndexOf(number);
+                    indexesDictionary[number][index] += 1;
+                 }
+            }
+
+            foreach (var keyValuePair in indexesDictionary)
+            {
+                Console.WriteLine("Number: {0}", keyValuePair.Key);
+                for (int i = 0; i < indexesDictionary[keyValuePair.Key].Length; i++)
+                {
+                    Console.WriteLine("{0} -> {1}", i, indexesDictionary[keyValuePair.Key][i]);
+                }
+
+                Console.WriteLine();
             }
         }
 
