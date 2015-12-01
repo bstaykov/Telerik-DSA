@@ -22,7 +22,7 @@
 
         public void FindPaths(int row, int col, int endRow, int endCol, char direction)
         {
-            if (!this.CheckRowAndCol(row, col))
+            if (!this.IsPossitionInsideMatrix(row, col))
             {
                 return;
             }
@@ -64,6 +64,10 @@
                 {
                     this.tempAreaCount = 0;
                     this.TraverseAreaFromPosition(i, j);
+                    if (this.tempAreaCount > this.maxAreaCount)
+                    {
+                        this.maxAreaCount = this.tempAreaCount;
+                    }
                 }
             }
 
@@ -72,7 +76,7 @@
 
         private void TraverseAreaFromPosition(int row, int col)
         {
-            if (!this.CheckRowAndCol(row, col))
+            if (!this.IsPossitionInsideMatrix(row, col))
             {
                 return;
             }
@@ -85,10 +89,6 @@
 
             this.matrix[row, col] = Visited;
             this.tempAreaCount++;
-            if (this.tempAreaCount > this.maxAreaCount)
-            {
-                this.maxAreaCount = this.tempAreaCount;
-            }
 
             this.TraverseAreaFromPosition(row - 1, col + 0); // up
             this.TraverseAreaFromPosition(row + 0, col + 1); // right
@@ -96,7 +96,7 @@
             this.TraverseAreaFromPosition(row + 0, col - 1); // left
         }
 
-        private bool CheckRowAndCol(int row, int col)
+        private bool IsPossitionInsideMatrix(int row, int col)
         {
             bool isRowCorrect = 0 <= row && row < this.matrix.GetLength(0);
             bool isColCorrect = 0 <= col && col < this.matrix.GetLength(1);
