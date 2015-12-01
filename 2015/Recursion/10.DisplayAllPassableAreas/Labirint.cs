@@ -12,8 +12,8 @@
         private const char Start = 's';
         private char[,] matrix;
         private char[,] displayedPassableCells;
-        private int lastDisplayedCellsCounter = 0;
-        private int displayedCellsCounter = 0;
+        private int displayedCells = 0;
+        private int visitedCells = 0;
         private List<char> directions = new List<char>();
 
         public Labirint(char[,] matrix)
@@ -31,14 +31,13 @@
                 for (int j = 0; j < this.matrix.GetLength(1); j++)
                 {
                     this.TraverseAreaFromPosition(i, j);
-                    if (this.lastDisplayedCellsCounter != this.displayedCellsCounter)
+                    if (this.displayedCells != this.visitedCells)
                     {
-                        int displayeAreaCellsCounter = this.displayedCellsCounter - this.lastDisplayedCellsCounter;
-                        Console.WriteLine("\nElements contained: {0}\n", displayeAreaCellsCounter);
+                        int areaSize = this.visitedCells - this.displayedCells;
+                        Console.WriteLine("\nElements contained: {0}\n", areaSize);
                         this.PrintArea();
+                        this.displayedCells = this.visitedCells;
                     }
-
-                    this.lastDisplayedCellsCounter = this.displayedCellsCounter;
                 }
             }
         }
@@ -105,7 +104,7 @@
             }
 
             this.matrix[row, col] = Visited;
-            this.displayedCellsCounter++;
+            this.visitedCells++;
 
             this.TraverseAreaFromPosition(row - 1, col + 0); // up
             this.TraverseAreaFromPosition(row + 0, col + 1); // right
