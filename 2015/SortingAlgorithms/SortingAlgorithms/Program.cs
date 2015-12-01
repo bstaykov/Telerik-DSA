@@ -17,8 +17,7 @@
         private static int searches = 5;
         private static int shuffles = 10;
         private static int shufflesCounterForNewIndexChecking = 100000;
-
-
+        
         public static void Main(string[] args)
         {
             TestLargeCollections(1000);
