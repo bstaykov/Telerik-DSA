@@ -15,8 +15,8 @@
         private bool[,] board;
         private bool[] occupiedRows;
         private bool[] occupiedCols;
-        private bool[] occupiedRightUpDiagonals;
-        private bool[] occupiedLeftUpDiagonals;
+        private bool[] occupiedLeftDownRightUpDiagonals;
+        private bool[] occupiedRightDownLeftUpDiagonals;
 
         public ChessBoard(int size)
         {
@@ -24,8 +24,8 @@
             this.board = new bool[size, size];
             this.occupiedRows = new bool[size];
             this.occupiedCols = new bool[size];
-            this.occupiedRightUpDiagonals = new bool[size * 2];
-            this.occupiedLeftUpDiagonals = new bool[size * 2];
+            this.occupiedLeftDownRightUpDiagonals = new bool[size * 2];
+            this.occupiedRightDownLeftUpDiagonals = new bool[size * 2];
         }
 
         public int CountBoardSolutions()
@@ -73,19 +73,19 @@
             {
                 if (this.board[row, col] == false && this.CheckQueenDirections(row, col))
                 {
-                    this.board[row, col] = true;
-
                     // this.occupiedRows[row] = true;
+                    this.board[row, col] = true;
                     this.occupiedCols[col] = true;
-                    this.occupiedRightUpDiagonals[row + col] = true;
-                    this.occupiedLeftUpDiagonals[this.size + col - row] = true;
+                    this.occupiedLeftDownRightUpDiagonals[row + col] = true;
+                    this.occupiedRightDownLeftUpDiagonals[this.size + col - row] = true;
+
                     this.CountSolutions(row + 1);
-                    this.board[row, col] = false;
 
                     // this.occupiedRows[row] = false;
+                    this.board[row, col] = false;
                     this.occupiedCols[col] = false;
-                    this.occupiedRightUpDiagonals[row + col] = false;
-                    this.occupiedLeftUpDiagonals[this.size + col - row] = false;
+                    this.occupiedLeftDownRightUpDiagonals[row + col] = false;
+                    this.occupiedRightDownLeftUpDiagonals[this.size + col - row] = false;
                 }
             }
         }
@@ -105,13 +105,13 @@
             // }
 
             // up-right-diagonal
-            if (this.occupiedRightUpDiagonals[currentRow + currentCol] == true)
+            if (this.occupiedLeftDownRightUpDiagonals[currentRow + currentCol] == true)
             {
                 return false;
             }
 
             // up-left
-            if (this.occupiedLeftUpDiagonals[this.size + currentCol - currentRow])
+            if (this.occupiedRightDownLeftUpDiagonals[this.size + currentCol - currentRow])
             {
                 return false;
             }
