@@ -9,9 +9,9 @@
     {
         private static int n;
         private static char[] directions;
-        private static BigInteger k;
+        private static ulong k;
         private static int[] password;
-        private static BigInteger counter = 0;
+        private static ulong counter = 0;
 
         public static void Main(string[] args)
         {
@@ -106,7 +106,7 @@
             directions = new char[n - 1];
             password = new int[n];
             directions = Console.ReadLine().ToArray();
-            k = BigInteger.Parse(Console.ReadLine());
+            k = ulong.Parse(Console.ReadLine());
         }
     }
 }
