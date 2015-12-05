@@ -3,12 +3,11 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Numerics;
 
     public class Program
     {
         private static int n;
-        private static char[] directions;
+        private static string directions;
         private static ulong k;
         private static int[] password;
         private static ulong counter = 0;
@@ -46,7 +45,9 @@
                 counter++;
                 if (counter == k)
                 {
-                    Console.WriteLine(BigInteger.Parse(string.Join(string.Empty, password)).ToString().PadLeft(n, '0'));
+                    Console.WriteLine(string.Join(string.Empty, password).PadLeft(n, '0'));
+
+                    // Environment.Exit(0);
                 }
 
                 return;
@@ -103,9 +104,8 @@
         private static void ReadInput()
         {
             n = int.Parse(Console.ReadLine());
-            directions = new char[n - 1];
             password = new int[n];
-            directions = Console.ReadLine().ToArray();
+            directions = Console.ReadLine();
             k = ulong.Parse(Console.ReadLine());
         }
     }
