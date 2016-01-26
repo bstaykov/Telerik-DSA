@@ -1,6 +1,7 @@
 ﻿namespace _02.MinimumEditDistance
 {
     using System;
+    using System.Linq;
     using System.Text;
     using LongestCommonSubsequence;
 
@@ -10,7 +11,11 @@
         {
             var firstString = "developer";
             var secondString = "enveloped";
-            Console.WriteLine("\nMED = {0}\n", CalculateMinimumEditDistance(firstString, secondString));            
+            Console.WriteLine("\nMED = {0}\n", CalculateMinimumEditDistance(firstString, secondString));
+
+            string firstReversed = string.Join("", firstString.Reverse());
+            string secondReversed = string.Join("", secondString.Reverse());
+            Console.WriteLine("\nMED = {0}\n", CalculateMinimumEditDistance(firstReversed, secondReversed));
         }
 
         private static double CalculateMinimumEditDistance(string firstString, string secondString)

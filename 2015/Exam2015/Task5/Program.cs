@@ -11,6 +11,9 @@
         private static ulong k;
         private static int[] password;
         private static ulong counter = 0;
+        private const char Equal = '=';
+        private const char Less = '<';
+        private const char More = '>';
 
         public static void Main(string[] args)
         {
@@ -29,10 +32,10 @@
 
         private static void EvalPossibleCombinations(int currentDigit, int directionIndex)
         {
-            if (counter == k)
-            {
-                return;
-            }
+            //if (counter == k)
+            //{
+            //    return;
+            //}
 
             if (directionIndex >= n)
             {
@@ -47,19 +50,17 @@
                 {
                     Console.WriteLine(string.Join(string.Empty, password).PadLeft(n, '0'));
 
-                    // Environment.Exit(0);
+                    Environment.Exit(0);
                 }
 
                 return;
             }
 
-            var direction = directions[directionIndex];
-
-            if (direction == '=')
+            if (directions[directionIndex] == Equal)
             {
                 EvalPossibleCombinations(currentDigit, directionIndex + 1);
             }
-            else if (direction == '>')
+            else if (directions[directionIndex] == More)
             {
                 if (currentDigit == 0)
                 {
@@ -73,7 +74,7 @@
                     EvalPossibleCombinations(i, directionIndex + 1);
                 }
             }
-            else if (direction == '<')
+            else // if (directions[directionIndex] == Less)
             {
                 if (currentDigit == 0)
                 {
@@ -90,15 +91,6 @@
                     }
                 }
             }
-        }
-
-        private static void TestPrintInput()
-        {
-            Console.WriteLine(n);
-
-            Console.WriteLine(string.Join(" ", directions));
-
-            Console.WriteLine(k);
         }
 
         private static void ReadInput()

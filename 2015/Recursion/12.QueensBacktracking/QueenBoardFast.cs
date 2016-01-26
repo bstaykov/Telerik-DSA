@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class ChessBoard
+    public class QueenBoardFast
     {
         private const char SwapValue = 'x';
         private const char Empty = ' ';
@@ -18,7 +18,7 @@
         private bool[] occupiedLeftDownRightUpDiagonals;
         private bool[] occupiedRightDownLeftUpDiagonals;
 
-        public ChessBoard(int size)
+        public QueenBoardFast(int size)
         {
             this.size = size;
             this.board = new bool[size, size];

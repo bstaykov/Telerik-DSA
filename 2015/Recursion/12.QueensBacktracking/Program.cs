@@ -10,7 +10,7 @@
         {
             int boardSize = 8;
             var board = new QueenBoard(boardSize);
-            var chessBoard = new ChessBoard(boardSize);
+            var chessBoard = new QueenBoardFast(boardSize);
             Console.WriteLine(chessBoard.CountBoardSolutions());
             Console.WriteLine(board.FindQueensSolutions());
             var counter = 1000;
