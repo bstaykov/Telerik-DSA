@@ -17,7 +17,7 @@
     public class CombinationsGeneratorNoReps
     {
         private const int N = 5;
-        private const int K = 3;
+        private const int K = 2;
         private static string[] objects = new string[N] { "banana", "apple", "orange", "strawberry", "raspberry" };
         private static int[] arr = new int[K];
 
@@ -34,6 +34,11 @@
             }
             else
             {
+                //for (int i = N - 1; i >= start; i--)
+                //{
+                //    arr[index] = i;
+                //    GenerateCombinationsNoRepetitions(index + 1, i + 1);
+                //}
                 for (int i = start; i < N; i++)
                 {
                     arr[index] = i;
