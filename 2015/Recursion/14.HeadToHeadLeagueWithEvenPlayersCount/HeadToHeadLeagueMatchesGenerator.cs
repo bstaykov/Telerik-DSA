@@ -73,9 +73,10 @@
             {
                 var firstMatch = new RoundMatch(0, 1, 0);
                 this.matches.Add(firstMatch);
-                var secondMatch = new RoundMatch(1, 0, 1);
-                this.matches.Add(secondMatch);
+                this.board[1, 0] = true;
 
+                // var secondMatch = new RoundMatch(1, 0, 1);
+                // this.matches.Add(secondMatch);
                 return this.matches;
             }
 

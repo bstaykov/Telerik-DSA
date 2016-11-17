@@ -7,7 +7,7 @@
     {
         public static void Main(string[] args)
         {
-            var hlmg = new OpponentsRoundsMatchesGenerator(20);
+            var hlmg = new OpponentsRoundsMatchesGenerator(2);
             hlmg.GenerateRoundsMatches();
             Console.WriteLine("Start");
             hlmg.PrintMatches();
