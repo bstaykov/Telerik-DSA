@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.NestedLoops", "01.NestedLoops\01.NestedLoops.csproj", "{A6FE9014-B087-4FE7-A93F-117C0C3EC0AC}"
 EndProject
@@ -59,6 +59,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "13.HeadToHeadLeague", "13.HeadToHeadLeague\13.HeadToHeadLeague.csproj", "{99AD8C8B-397C-4054-AFF1-5C7AF0600A66}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "14.HeadToHeadLeagueWithEvenPlayersCountONLY", "14.HeadToHeadLeagueWithEvenPlayersCount\14.HeadToHeadLeagueWithEvenPlayersCountONLY.csproj", "{32B4AEF9-8EF7-4499-B692-EBD752809BDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "15.HeadToHeadLeagueMatchesGenerator", "15.HeadToHeadLeagueMatchesGenerator\15.HeadToHeadLeagueMatchesGenerator.csproj", "{45380456-B142-4D67-9914-D21ECFBCEBFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "16.HeadToHeadLeagueCombinationsCount", "16.HeadToHeadLeagueCombinationsCount\16.HeadToHeadLeagueCombinationsCount.csproj", "{4E3F5F82-C80D-46D8-A5E7-8153ED290FC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -130,6 +134,14 @@ Global
 		{32B4AEF9-8EF7-4499-B692-EBD752809BDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32B4AEF9-8EF7-4499-B692-EBD752809BDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32B4AEF9-8EF7-4499-B692-EBD752809BDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45380456-B142-4D67-9914-D21ECFBCEBFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45380456-B142-4D67-9914-D21ECFBCEBFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45380456-B142-4D67-9914-D21ECFBCEBFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45380456-B142-4D67-9914-D21ECFBCEBFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E3F5F82-C80D-46D8-A5E7-8153ED290FC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E3F5F82-C80D-46D8-A5E7-8153ED290FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E3F5F82-C80D-46D8-A5E7-8153ED290FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E3F5F82-C80D-46D8-A5E7-8153ED290FC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

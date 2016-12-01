@@ -3,6 +3,9 @@
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// NEEED FIX, NOT WORKING CORRECT
+    /// </summary>
     public class OpponentsRoundsMatchesGenerator
     {
         private const char SwapValue = 'x';
@@ -10,19 +13,19 @@
         private const char Match = 'M';
         private int size;
         private int round;
-        private int tempOpponentsMaxCount;
+        private int tempMatchesMaxCount;
         private bool[,] board;
-        private bool[,] tempMatches;
+        private bool[,] tempBoard;
         private bool hasFoundAllCombinations;
         private bool[] occupiedRowsAndCols;
         private IList<RoundMatch> matches;
-        private Stack<RoundMatch> tempOpponets;
+        private Stack<RoundMatch> tempMatches;
         private bool hasAddedFixtureMatches;
 
         public OpponentsRoundsMatchesGenerator(int size)
         {
             this.size = size;
-            this.tempOpponentsMaxCount = this.size / 2;
+            this.tempMatchesMaxCount = this.size / 2;
             this.board = new bool[size, size];
             this.round = 0;
             this.hasFoundAllCombinations = false;
@@ -32,12 +35,12 @@
         public void PrintBoard()
         {
             Console.WriteLine("   0 1 2 3 4 5 6 7");
-            for (int i = 0; i < this.board.GetLength(0); i++)
+            for (int row = 0; row < this.board.GetLength(0); row++)
             {
-                Console.Write("{0} ", i);
-                for (int j = 0; j < this.board.GetLength(1); j++)
+                Console.Write("{0} ", row);
+                for (int col = 0; col < this.board.GetLength(1); col++)
                 {
-                    if (this.board[i, j] == true)
+                    if (this.board[row, col] == true)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write(" " + Match);
@@ -71,11 +74,11 @@
             }
             else if (this.size == 2)
             {
-                var firstMatch = new RoundMatch(0, 1, 0);
+                var firstMatch = new RoundMatch(1, 0, 0);
                 this.matches.Add(firstMatch);
                 this.board[1, 0] = true;
 
-                // var secondMatch = new RoundMatch(1, 0, 1);
+                // var secondMatch = new RoundMatch(0, 1, 1);
                 // this.matches.Add(secondMatch);
                 return this.matches;
             }
@@ -83,16 +86,17 @@
             int row = 1;
             while (row < this.size)
             {
-                this.tempMatches = new bool[this.size, this.size];
-                this.tempOpponets = new Stack<RoundMatch>();
-                this.occupiedRowsAndCols = new bool[this.size];
-                this.hasAddedFixtureMatches = false;
                 var match = new RoundMatch(row, 0, this.round);
-                this.tempOpponets.Push(match);
+                this.tempMatches = new Stack<RoundMatch>();
+                this.tempMatches.Push(match);
+                this.tempBoard = new bool[this.size, this.size];
+                this.tempBoard[row, 0] = true;
+                this.occupiedRowsAndCols = new bool[this.size];
                 this.occupiedRowsAndCols[row] = true;
                 this.occupiedRowsAndCols[0] = true;
+                this.hasAddedFixtureMatches = false;
                 this.board[row, 0] = true;
-                this.FindPossibleMatch(0);
+                this.FindPossibleMatch(2);
                 row++;
             }
 
@@ -113,19 +117,19 @@
                 return;
             }
 
-            int maxCol = row - 1;
             int col = 0;
+            int maxCol = row - 1;
             while (col <= maxCol)
             {
-                if (this.tempMatches[row, col] == false && this.IsMatchAvailable(row, col))
+                if (this.IsMatchAvailable(row, col))
                 {
                     var match = new RoundMatch(row, col, this.round);
-                    this.tempOpponets.Push(match);
+                    this.tempMatches.Push(match);
                     this.occupiedRowsAndCols[row] = true;
                     this.occupiedRowsAndCols[col] = true;
-                    this.tempMatches[row, col] = true;
+                    this.tempBoard[row, col] = true;
 
-                    if (this.tempOpponets.Count == this.tempOpponentsMaxCount)
+                    if (this.tempMatches.Count == this.tempMatchesMaxCount)
                     {
                         this.AddTempOpponetsToFinalList();
                         this.hasAddedFixtureMatches = true;
@@ -138,10 +142,10 @@
                         return;
                     }
 
-                    this.tempOpponets.Pop();
+                    this.tempMatches.Pop();
                     this.occupiedRowsAndCols[row] = false;
                     this.occupiedRowsAndCols[col] = false;
-                    this.tempMatches[row, col] = false;
+                    this.tempBoard[row, col] = false;
                 }
 
                 col++;
@@ -152,12 +156,10 @@
 
         private bool IsMatchAvailable(int row, int col)
         {
-            if (this.occupiedRowsAndCols[row] || this.occupiedRowsAndCols[col])
-            {
-                return false;
-            }
-
-            if (this.board[row, col])
+            if (this.occupiedRowsAndCols[row] ||
+                this.occupiedRowsAndCols[col] ||
+                this.board[row, col] ||
+                this.tempBoard[row, col])
             {
                 return false;
             }
@@ -167,9 +169,9 @@
 
         private void AddTempOpponetsToFinalList()
         {
-            while (this.tempOpponets.Count != 0)
+            while (this.tempMatches.Count != 0)
             {
-                var match = this.tempOpponets.Pop();
+                var match = this.tempMatches.Pop();
                 this.board[match.HomeTeam, match.AwayTeam] = true;
                 this.matches.Add(match);
             }
@@ -183,8 +185,8 @@
 
             while (row < this.size)
             {
-                int maxCol = row - 1;
                 int col = 0;
+                int maxCol = row - 1;
                 while (col <= maxCol)
                 {
                     if (this.board[row, col] == false)

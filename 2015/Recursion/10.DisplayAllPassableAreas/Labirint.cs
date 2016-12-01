@@ -153,8 +153,8 @@
 
         private bool CheckRowAndCol(int row, int col)
         {
-            bool isRowCorrect = 0 <= row && row < this.matrix.GetLength(0);
-            bool isColCorrect = 0 <= col && col < this.matrix.GetLength(1);
+            bool isRowCorrect = row >= 0 && row < this.matrix.GetLength(0);
+            bool isColCorrect = col >= 0 && col < this.matrix.GetLength(1);
             if (!isRowCorrect || !isColCorrect)
             {
                 return false;

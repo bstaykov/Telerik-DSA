@@ -3,6 +3,9 @@
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// NEEED FIX, NOT WORKING CORRECT
+    /// </summary>
     public class HeadToHeadLeagueMatchesGenerator
     {
         private const char SwapValue = 'x';

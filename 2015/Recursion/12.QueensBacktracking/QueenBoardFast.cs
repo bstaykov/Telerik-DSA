@@ -9,7 +9,6 @@
         private const char Empty = ' ';
         private const char Queen = 'Q';
         private const bool BoolQueen = true;
-        private static int counter = 0;
         private static int solutionsCounter = 0;
         private int size = 0;
         private bool[,] board;

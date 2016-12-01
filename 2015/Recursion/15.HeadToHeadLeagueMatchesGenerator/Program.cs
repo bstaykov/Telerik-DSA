@@ -1,4 +1,4 @@
-﻿namespace _13.HeadToHeadLeague
+﻿namespace _15.HeadToHeadLeagueMatchesGenerator
 {
     using System;
     using System.Collections.Generic;
@@ -7,9 +7,9 @@
     {
         public static void Main(string[] args)
         {
-            var hlmg = new HeadToHeadLeagueMatchesGenerator(12);
-            hlmg.GenerateMatches();
+            var hlmg = new RoundsMatchesGenerator(6);
             Console.WriteLine("Start");
+            hlmg.GenerateRoundsMatches();
             hlmg.PrintMatches();
             hlmg.PrintBoard();
         }
